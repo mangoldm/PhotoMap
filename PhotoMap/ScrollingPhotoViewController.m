@@ -250,8 +250,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-	
-    if (!self.splitViewController) { // If not iPad
+    if (self.navigationController) { // If not iPad
         // reference the calling view controller and set its delegate to self
         NSUInteger viewControllerCount = [self.navigationController.viewControllers count];
         PhotosTableViewController *callingViewController = [self.navigationController.viewControllers objectAtIndex:viewControllerCount - 2];
@@ -262,9 +261,7 @@
         
         self.spinner.center = self.view.center;
     } else {
-        UINavigationController *detailNav = [self.splitViewController.viewControllers lastObject];
-        UIViewController *detail = [detailNav.viewControllers lastObject];
-        self.scrollView.frame = detail.view.frame;
+        self.scrollView.frame = self.view.frame;
     }
 }
 

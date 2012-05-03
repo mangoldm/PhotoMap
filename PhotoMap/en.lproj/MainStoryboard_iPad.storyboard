@@ -12,15 +12,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKa-Vf-Zoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8OC-qW-Jjz" customClass="ScrollingPhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YIA-5H-gHM">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="QEI-DH-zQk">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" title="Map" id="CMP-iu-Qdh"/>
                     <connections>
                         <outlet property="mapView" destination="EGE-dL-6Dh" id="tsn-Jv-QkS"/>
-                        <segue destination="8OC-qW-Jjz" kind="push" identifier="Show Image For Photo Annotation" id="u5J-eu-vGx"/>
+                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image For Photo Annotation" modalPresentationStyle="pageSheet" modalTransitionStyle="crossDissolve" id="u5J-eu-vGx"/>
                     </connections>
                 </viewController>
             </objects>
