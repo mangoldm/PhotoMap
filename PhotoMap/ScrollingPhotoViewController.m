@@ -28,6 +28,11 @@
 
 #define RECENT_PHOTOS_KEY @"ScrollingPhotoViewController.Recent"
 
+- (IBAction)dismissPhoto:(UITapGestureRecognizer *)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
 	return self.imageView;

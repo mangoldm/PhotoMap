@@ -12,16 +12,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKa-Vf-Zoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="8OC-qW-Jjz" customClass="ScrollingPhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YIA-5H-gHM">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="QEI-DH-zQk">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                    <imageView contentMode="scaleToFill" id="QEI-DH-zQk">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="QeJ-OP-Ylb" appends="YES" id="S21-Xb-Uvh"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.3549904337" green="0.12840884920000001" blue="0.01032684335" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,6 +42,11 @@
                         <outlet property="scrollView" destination="Pvt-mc-nX0" id="vvQ-UA-qMG"/>
                     </connections>
                 </viewController>
+                <tapGestureRecognizer id="QeJ-OP-Ylb">
+                    <connections>
+                        <action selector="dismissPhoto:" destination="8OC-qW-Jjz" id="9kf-Pk-fKx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1097" y="192"/>
         </scene>
@@ -61,7 +70,7 @@
                     <navigationItem key="navigationItem" title="Map" id="CMP-iu-Qdh"/>
                     <connections>
                         <outlet property="mapView" destination="EGE-dL-6Dh" id="tsn-Jv-QkS"/>
-                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image For Photo Annotation" modalPresentationStyle="pageSheet" modalTransitionStyle="crossDissolve" id="u5J-eu-vGx"/>
+                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image For Photo Annotation" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="u5J-eu-vGx"/>
                     </connections>
                 </viewController>
             </objects>
@@ -339,6 +348,7 @@
         <class className="ScrollingPhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollingPhotoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="dismissPhoto:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
