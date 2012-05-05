@@ -88,7 +88,9 @@
     if (photoID) { // Annotation is for an image
         [self performSegueWithIdentifier:@"Show Image For Photo Annotation" sender:view.annotation];
     } else {  // Annotation is for a place
-        [self performSegueWithIdentifier:@"Show Photos for Place Annotation" sender:view.annotation];
+        if (!self.splitViewController) { // not iPad
+            [self performSegueWithIdentifier:@"Show Photos for Place Annotation" sender:view.annotation];
+        }
     }
 }
 
@@ -153,10 +155,10 @@
         
         // Use first annotation as intial reference
         FlickrPhotoAnnotation *annotation = [self.annotations objectAtIndex:0];
-        double minLatitude  = annotation.coordinate.latitude;
-        double maxLatitude  = annotation.coordinate.latitude;
-        double minLongitude = annotation.coordinate.longitude;
-        double maxLongitude = annotation.coordinate.longitude;
+        minLatitude  = annotation.coordinate.latitude;
+        maxLatitude  = annotation.coordinate.latitude;
+        minLongitude = annotation.coordinate.longitude;
+        maxLongitude = annotation.coordinate.longitude;
         
         // Compare against all annotations
         for (FlickrPhotoAnnotation *annotation in self.annotations) {
@@ -192,7 +194,6 @@
 {
     [super viewWillAppear:NO];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
-    NSLog(@"self.splitViewController:%@",self.splitViewController);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

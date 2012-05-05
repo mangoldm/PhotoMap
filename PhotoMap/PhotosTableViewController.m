@@ -175,6 +175,9 @@
     if (!self.title) {
         self.title = @"Recently Viewed";
     }
+    if (self.photos) {
+        [self updateSplitViewDetail];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -174,6 +174,9 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+    if (self.places) {
+        [self updateSplitViewDetail];
+    }
 }
 
 @end

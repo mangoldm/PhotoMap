@@ -53,7 +53,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1209" y="-1025"/>
+            <point key="canvasLocation" x="1209" y="-737"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="Guw-u6-0rb">
@@ -135,7 +135,7 @@
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="191" y="-2296"/>
+            <point key="canvasLocation" x="144" y="-2008"/>
         </scene>
         <!--Photos Table View Controller - Place Recents-->
         <scene sceneID="v1e-po-W1Z">
@@ -190,7 +190,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="623" y="-2296"/>
+            <point key="canvasLocation" x="623" y="-2008"/>
         </scene>
         <!--Photos Table View Controller - Recently Viewed-->
         <scene sceneID="rSg-Fk-9tL">
@@ -246,7 +246,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="191" y="-1141"/>
+            <point key="canvasLocation" x="144" y="-853"/>
         </scene>
         <!--Navigation Controller - Top Places-->
         <scene sceneID="Zjd-v5-0YD">
@@ -262,7 +262,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-335" y="-2296"/>
+            <point key="canvasLocation" x="-335" y="-2008"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="dgb-58-qTB">
@@ -294,7 +294,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-869" y="-1707"/>
+            <point key="canvasLocation" x="-869" y="-1419"/>
         </scene>
         <!--Navigation Controller - Recents-->
         <scene sceneID="0iv-Yd-wwQ">
@@ -313,7 +313,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-327" y="-1141"/>
+            <point key="canvasLocation" x="-327" y="-853"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q6m-8Q-xxI">
@@ -338,12 +338,38 @@
         <image name="clock.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="PhotosTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="PlacesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
+        </class>
+        <class className="ScrollingPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollingPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissPhoto:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="u5J-eu-vGx"/>
+        <segue reference="FfJ-Ja-RtB"/>
     </inferredMetricsTieBreakers>
 </document>
