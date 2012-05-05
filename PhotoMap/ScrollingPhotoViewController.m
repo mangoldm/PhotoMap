@@ -209,13 +209,30 @@
             }
             
             // zoom to fit the image by whichever dimension is closest to the screen size
-            CGFloat imageAspectRatio = self.imageView.image.size.width   / self.imageView.image.size.height;
-            CGFloat viewAspectRatio  = self.scrollView.bounds.size.width / self.scrollView.bounds.size.height;
-            if (imageAspectRatio < viewAspectRatio) {
-                [self.scrollView zoomToRect:CGRectMake(0, 0, self.imageView.image.size.width, self.scrollView.bounds.size.height) animated:YES];
+            CGFloat w1 = self.scrollView.bounds.size.width;
+            CGFloat h1 = self.scrollView.bounds.size.height;
+            CGFloat w2 = self.imageView.image.size.width;
+            CGFloat h2 = self.imageView.image.size.height;
+            
+            CGFloat width  = w2;
+            CGFloat height = h2;
+            
+            if (w1 - w2 > h1 - h2) {
+                width = w2;
+                height = h2 - h1;
             } else {
-                [self.scrollView zoomToRect:CGRectMake(0, 0, self.scrollView.bounds.size.width, self.imageView.image.size.height) animated:YES];
+                width = w1;
+                height = h2;
             }
+
+            NSLog(@"self.scrollView.bounds.size.width:%f",self.scrollView.bounds.size.width);
+            NSLog(@"self.scrollView.bounds.size.height:%f",self.scrollView.bounds.size.height);
+            NSLog(@"self.imageView.image.size.width:%f",self.imageView.image.size.width);
+            NSLog(@"self.imageView.image.size.height:%f",self.imageView.image.size.height);
+            NSLog(@"width:%f",width);
+            NSLog(@"height:%f",height);
+            NSLog(@"===");
+            [self.scrollView zoomToRect:CGRectMake(0, 0, width, height) animated:YES];
             [self.spinner stopAnimating];
         });
     });
