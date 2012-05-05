@@ -221,17 +221,10 @@
                 width = w2;
                 height = h2 - h1;
             } else {
-                width = w1;
+                width = w2 - w1;
                 height = h2;
             }
 
-            NSLog(@"self.scrollView.bounds.size.width:%f",self.scrollView.bounds.size.width);
-            NSLog(@"self.scrollView.bounds.size.height:%f",self.scrollView.bounds.size.height);
-            NSLog(@"self.imageView.image.size.width:%f",self.imageView.image.size.width);
-            NSLog(@"self.imageView.image.size.height:%f",self.imageView.image.size.height);
-            NSLog(@"width:%f",width);
-            NSLog(@"height:%f",height);
-            NSLog(@"===");
             [self.scrollView zoomToRect:CGRectMake(0, 0, width, height) animated:YES];
             [self.spinner stopAnimating];
         });
