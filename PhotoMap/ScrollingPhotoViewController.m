@@ -210,10 +210,8 @@
                 }
             } else {  // if iPad
                 if (photoInCache) {
-                    NSLog(@"From Cache");
                     self.scrollView.backgroundColor = CACHE_COLOR;
                 } else {
-                    NSLog(@"From Flickr");
                     self.scrollView.backgroundColor = DEFAULT_COLOR;
                 }
             }

@@ -144,19 +144,27 @@
 // Sets the map's focus to encompass the annotations
 - (void)moveToRegion
 {
-    // Use first annotation as intial reference
-    FlickrPhotoAnnotation *annotation = [self.annotations objectAtIndex:0];
-    double minLatitude  = annotation.coordinate.latitude;
-    double maxLatitude  = annotation.coordinate.latitude;
-    double minLongitude = annotation.coordinate.longitude;
-    double maxLongitude = annotation.coordinate.longitude;
+    double minLatitude  = 0;
+    double maxLatitude  = 90;
+    double minLongitude = -179;
+    double maxLongitude = 180;
     
-    // Compare against all annotations
-    for (FlickrPhotoAnnotation *annotation in self.annotations) {
-        if (annotation.coordinate.latitude  < minLatitude)  minLatitude  = annotation.coordinate.latitude;
-        if (annotation.coordinate.latitude  > maxLatitude)  maxLatitude  = annotation.coordinate.latitude;
-        if (annotation.coordinate.longitude < minLongitude) minLongitude = annotation.coordinate.longitude;
-        if (annotation.coordinate.longitude > maxLongitude) maxLongitude = annotation.coordinate.longitude;
+    if (self.annotations.count > 0) {
+        
+        // Use first annotation as intial reference
+        FlickrPhotoAnnotation *annotation = [self.annotations objectAtIndex:0];
+        double minLatitude  = annotation.coordinate.latitude;
+        double maxLatitude  = annotation.coordinate.latitude;
+        double minLongitude = annotation.coordinate.longitude;
+        double maxLongitude = annotation.coordinate.longitude;
+        
+        // Compare against all annotations
+        for (FlickrPhotoAnnotation *annotation in self.annotations) {
+            if (annotation.coordinate.latitude  < minLatitude)  minLatitude  = annotation.coordinate.latitude;
+            if (annotation.coordinate.latitude  > maxLatitude)  maxLatitude  = annotation.coordinate.latitude;
+            if (annotation.coordinate.longitude < minLongitude) minLongitude = annotation.coordinate.longitude;
+            if (annotation.coordinate.longitude > maxLongitude) maxLongitude = annotation.coordinate.longitude;
+        }
     }
     
     // Calculate the center of the region
@@ -184,6 +192,7 @@
 {
     [super viewWillAppear:NO];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+    NSLog(@"self.splitViewController:%@",self.splitViewController);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
