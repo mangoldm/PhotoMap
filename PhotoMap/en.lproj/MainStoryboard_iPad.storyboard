@@ -27,6 +27,10 @@
                                             <outletCollection property="gestureRecognizers" destination="QeJ-OP-Ylb" appends="YES" id="S21-Xb-Uvh"/>
                                         </connections>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="Fwi-kr-39d">
+                                        <rect key="frame" x="252" y="291" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.3549904337" green="0.12840884920000001" blue="0.01032684335" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -40,6 +44,7 @@
                     <connections>
                         <outlet property="imageView" destination="QEI-DH-zQk" id="vjV-1L-Sme"/>
                         <outlet property="scrollView" destination="Pvt-mc-nX0" id="vvQ-UA-qMG"/>
+                        <outlet property="spinner" destination="Fwi-kr-39d" id="etq-6b-j6a"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="QeJ-OP-Ylb">
@@ -333,32 +338,6 @@
         <image name="clock.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="PhotosTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="PlacesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
-        </class>
-        <class className="ScrollingPhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollingPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissPhoto:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -202,12 +202,22 @@
             self.imageView.frame        = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
             
             // Color of navigation bar indicates cache state
-            if (photoInCache) {
-                self.navigationController.navigationBar.tintColor = CACHE_COLOR;
-            } else {
-                self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+            if (self.parentViewController) { // if iPhone
+                if (photoInCache) {
+                    self.navigationController.navigationBar.tintColor = CACHE_COLOR;
+                } else {
+                    self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+                }
+            } else {  // if iPad
+                if (photoInCache) {
+                    NSLog(@"From Cache");
+                    self.scrollView.backgroundColor = CACHE_COLOR;
+                } else {
+                    NSLog(@"From Flickr");
+                    self.scrollView.backgroundColor = DEFAULT_COLOR;
+                }
             }
-            
+                        
             // zoom to fit the image by whichever dimension is closest to the screen size
             CGFloat w1 = self.scrollView.bounds.size.width;
             CGFloat h1 = self.scrollView.bounds.size.height;
