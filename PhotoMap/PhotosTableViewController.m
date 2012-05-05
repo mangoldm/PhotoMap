@@ -16,9 +16,10 @@
 @end
 
 @implementation PhotosTableViewController
-@synthesize spinner  = _spinner;
-@synthesize photos   = _photos;
-@synthesize delegate = _delegate;
+@synthesize spinner     = _spinner;
+@synthesize photos      = _photos;
+@synthesize chosenPhoto = _chosenPhoto;
+@synthesize delegate    = _delegate;
 
 #define RECENT_PHOTOS_KEY @"ScrollingPhotoViewController.Recent"
 
@@ -70,6 +71,11 @@
         mapVC.annotations = [self mapAnnotations];
         mapVC.delegate = self;
         mapVC.title = self.title;
+    } else {
+        if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation"] ||
+            [segue.identifier isEqualToString: @"Show Image From Table"]) {
+            [segue.destinationViewController viewController:self chosePhoto:self.chosenPhoto];
+        }
     }
 }
 
@@ -135,15 +141,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {	
 	// send chosen photo to delegate
-    if (self.splitViewController) {
+    if (self.splitViewController) { // if on iPad
         UINavigationController *detailNav = [self.splitViewController.viewControllers lastObject];
         id detail = [detailNav.viewControllers lastObject];
         if ([detail isKindOfClass:[MapViewController class]]) {
-            ScrollingPhotoViewController *scrollingPVC = [[ScrollingPhotoViewController alloc] init];
-            id photo = [self.photos objectAtIndex:indexPath.row];
-            scrollingPVC.chosenPhoto = photo;
-            self.delegate = scrollingPVC;
-            [detailNav pushViewController:scrollingPVC animated:YES];
+            self.chosenPhoto = [self.photos objectAtIndex:indexPath.row];
+            [self performSegueWithIdentifier:@"Show Image From Table" sender:self];
         }
     } else {
         id photo = [self.photos objectAtIndex:indexPath.row];

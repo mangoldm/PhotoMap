@@ -24,5 +24,6 @@
 @interface PhotosTableViewController: UITableViewController <PhotosTableViewControllerDelegate>
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) id chosenPhoto;
 @property (nonatomic, weak) id <PhotosTableViewControllerDelegate> delegate;
 @end

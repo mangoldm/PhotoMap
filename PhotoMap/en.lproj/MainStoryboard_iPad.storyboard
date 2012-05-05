@@ -48,7 +48,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1097" y="192"/>
+            <point key="canvasLocation" x="1161" y="394"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="Guw-u6-0rb">
@@ -181,6 +181,7 @@
                     <navigationItem key="navigationItem" title="Place Recents" id="hSr-N2-R5m"/>
                     <connections>
                         <outlet property="spinner" destination="WsH-tU-qEa" id="Sq8-kV-rw3"/>
+                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image From Table" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="syE-6f-fM9"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -329,35 +330,12 @@
         <image name="clock.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="PhotosTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="PlacesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
-        </class>
-        <class className="ScrollingPhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollingPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissPhoto:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="syE-6f-fM9"/>
+    </inferredMetricsTieBreakers>
 </document>
