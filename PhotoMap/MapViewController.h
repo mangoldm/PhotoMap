@@ -12,14 +12,15 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "FlickrPhotoAnnotation.h"
+#import "SplitViewBarButtonItemPresenter.h"
 
 @class MapViewController;
 @protocol MapViewControllerDelegate <NSObject>
 @optional - (void)photosTableViewController:(id *)sender chosePhoto:(id)photo;
 @end
 
-@interface MapViewController : UIViewController <MapViewControllerDelegate>
-@property (nonatomic, strong) NSArray *annotations; // of id <MKAnnotation>
-@property (nonatomic, strong) FlickrPhotoAnnotation *chosenAnnotation;
-@property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
+@interface MapViewController : UIViewController <MapViewControllerDelegate, SplitViewBarButtonItemPresenter>
+@property (nonatomic, strong)        NSArray                    *annotations; // of id <MKAnnotation>
+@property (nonatomic, strong)        FlickrPhotoAnnotation      *chosenAnnotation;
+@property (nonatomic, weak) id       <MapViewControllerDelegate> delegate;
 @end

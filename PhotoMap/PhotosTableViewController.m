@@ -25,8 +25,7 @@
 
 - (void)updateSplitViewDetail
 {
-    UINavigationController *detailNav = [self.splitViewController.viewControllers lastObject];
-    id detail = [detailNav.viewControllers lastObject];
+    id detail = [self.splitViewController.viewControllers lastObject];
     if ([detail isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController *)detail;
         mapVC.annotations = [self mapAnnotations];
@@ -142,8 +141,7 @@
 {	
 	// send chosen photo to delegate
     if (self.splitViewController) { // if on iPad
-        UINavigationController *detailNav = [self.splitViewController.viewControllers lastObject];
-        id detail = [detailNav.viewControllers lastObject];
+        id detail = [self.splitViewController.viewControllers lastObject];
         if ([detail isKindOfClass:[MapViewController class]]) {
             self.chosenPhoto = [self.photos objectAtIndex:indexPath.row];
             [self performSegueWithIdentifier:@"Show Image From Table" sender:self];

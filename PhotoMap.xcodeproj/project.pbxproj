@@ -29,6 +29,7 @@
 		6D96B5C915509D1D0021E336 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D96B5C815509D1D0021E336 /* clock.png */; };
 		6D99E37314F9EE4D00108D40 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D99E37214F9EE4D00108D40 /* world.png */; };
 		6DCE2FB514F83F7B00132C8A /* PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE2FB414F83F7B00132C8A /* PhotosTableViewController.m */; };
+		6DE5FC941556CF870046122F /* PhotosTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5FC931556CF870046122F /* PhotosTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,9 @@
 		6D99E37214F9EE4D00108D40 /* world.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world.png; sourceTree = "<group>"; };
 		6DCE2FB314F83F7B00132C8A /* PhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosTableViewController.h; sourceTree = "<group>"; };
 		6DCE2FB414F83F7B00132C8A /* PhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosTableViewController.m; sourceTree = "<group>"; };
+		6DE5FC901556CD0D0046122F /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
+		6DE5FC921556CF870046122F /* PhotosTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosTabBar.h; sourceTree = "<group>"; };
+		6DE5FC931556CF870046122F /* PhotosTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +128,15 @@
 				6D7F983E14F8053200E0A682 /* MainStoryboard_iPad.storyboard */,
 				6D836916153CE182009F56AA /* MapViewController.h */,
 				6D836917153CE182009F56AA /* MapViewController.m */,
+				6DE5FC921556CF870046122F /* PhotosTabBar.h */,
+				6DE5FC931556CF870046122F /* PhotosTabBar.m */,
 				6DCE2FB314F83F7B00132C8A /* PhotosTableViewController.h */,
 				6DCE2FB414F83F7B00132C8A /* PhotosTableViewController.m */,
 				6D83690F153CD9D1009F56AA /* PlacesTableViewController.h */,
 				6D836910153CD9DE009F56AA /* PlacesTableViewController.m */,
 				6D6A7D7C150707200009577E /* ScrollingPhotoViewController.h */,
 				6D6A7D7D150707200009577E /* ScrollingPhotoViewController.m */,
+				6DE5FC901556CD0D0046122F /* SplitViewBarButtonItemPresenter.h */,
 				6D7F983014F8053200E0A682 /* Supporting Files */,
 			);
 			path = PhotoMap;
@@ -240,6 +247,7 @@
 				6D836911153CD9DE009F56AA /* PlacesTableViewController.m in Sources */,
 				6D836918153CE182009F56AA /* MapViewController.m in Sources */,
 				6D8FD9691543152F003020F3 /* FlickrPhotoAnnotation.m in Sources */,
+				6DE5FC941556CF870046122F /* PhotosTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,8 +20,7 @@
 
 - (void)updateSplitViewDetail
 {
-    UINavigationController *detailNav = [self.splitViewController.viewControllers lastObject];
-    id detail = [detailNav.viewControllers lastObject];
+    id detail = [self.splitViewController.viewControllers lastObject];
     if ([detail isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController *)detail;
         mapVC.annotations = [self mapAnnotations];
@@ -173,8 +172,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
-    NSLog(@"self:%@",self);
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
     if (self.places) {

@@ -14,13 +14,16 @@
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, weak) IBOutlet UIToolbar *toolbar; // to put splitViewBarButtonitem in
 @end
 
 @implementation MapViewController
-@synthesize mapView          = _mapView;
-@synthesize annotations      = _annotations;
-@synthesize delegate         = _delegate;
-@synthesize chosenAnnotation = _chosenAnnotation;
+@synthesize mapView                = _mapView;
+@synthesize annotations            = _annotations;
+@synthesize delegate               = _delegate;
+@synthesize chosenAnnotation       = _chosenAnnotation;
+@synthesize toolbar                = _toolbar;
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 
 - (void)updateMapView
 {
@@ -39,6 +42,17 @@
 {
     _annotations = annotations;
     [self updateMapView];
+}
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)newSplitViewBarButtonItem
+{
+    if (_splitViewBarButtonItem != newSplitViewBarButtonItem) {
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
+        if (newSplitViewBarButtonItem) [toolbarItems insertObject:newSplitViewBarButtonItem atIndex:0];
+        self.toolbar.items = toolbarItems;
+        _splitViewBarButtonItem = newSplitViewBarButtonItem;
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -74,8 +88,6 @@
                 UINavigationController *masterNav = [master.viewControllers objectAtIndex:0];
                 PlacesTableViewController *placesTableViewController = [masterNav.viewControllers objectAtIndex:0];
                 placesTableViewController.chosenPlace = self.chosenAnnotation.photo;
-                NSLog(@"placesTableViewContter%@",placesTableViewController);
-                NSLog(@"placesTableViewController.chosenPlace:%@",placesTableViewController.chosenPlace);
             }
         }
     }
@@ -204,7 +216,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:NO];
-    self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+    self.toolbar.tintColor = DEFAULT_COLOR;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
