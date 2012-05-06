@@ -16,6 +16,7 @@
 
 @implementation PlacesTableViewController
 @synthesize places = _places;
+@synthesize chosenPlace = _chosenPlace;
 
 - (void)updateSplitViewDetail
 {
@@ -172,6 +173,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    NSLog(@"self:%@",self);
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
     if (self.places) {

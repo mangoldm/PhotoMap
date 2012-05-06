@@ -15,4 +15,5 @@
 
 @interface PlacesTableViewController : UITableViewController <UINavigationBarDelegate>
 @property (nonatomic, strong) NSArray *places;
+@property (nonatomic, strong) id chosenPlace;
 @end

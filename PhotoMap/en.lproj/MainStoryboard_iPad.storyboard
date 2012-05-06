@@ -53,7 +53,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1209" y="-737"/>
+            <point key="canvasLocation" x="-169" y="-589"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="Guw-u6-0rb">
@@ -76,10 +76,11 @@
                     <connections>
                         <outlet property="mapView" destination="EGE-dL-6Dh" id="tsn-Jv-QkS"/>
                         <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image For Photo Annotation" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="u5J-eu-vGx"/>
+                        <segue destination="INy-Ub-eTq" kind="replace" identifier="Show Photos for Place Annotation on iPad" splitViewControllerTargetIndex="0" id="xaQ-6t-0TW"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="175" y="192"/>
+            <point key="canvasLocation" x="-1203" y="340"/>
         </scene>
         <!--Places Table View Controller - Top Places-->
         <scene sceneID="SdJ-Et-0By">
@@ -135,7 +136,7 @@
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="144" y="-2008"/>
+            <point key="canvasLocation" x="-1234" y="-1860"/>
         </scene>
         <!--Photos Table View Controller - Place Recents-->
         <scene sceneID="v1e-po-W1Z">
@@ -190,7 +191,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="623" y="-2008"/>
+            <point key="canvasLocation" x="-755" y="-1860"/>
         </scene>
         <!--Photos Table View Controller - Recently Viewed-->
         <scene sceneID="rSg-Fk-9tL">
@@ -246,7 +247,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="144" y="-853"/>
+            <point key="canvasLocation" x="-1234" y="-705"/>
         </scene>
         <!--Navigation Controller - Top Places-->
         <scene sceneID="Zjd-v5-0YD">
@@ -262,7 +263,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-335" y="-2008"/>
+            <point key="canvasLocation" x="-1713" y="-1860"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="dgb-58-qTB">
@@ -270,13 +271,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="106-JV-Dbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <splitViewController id="9iF-Ag-f0q" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Uza-f6-khz"/>
                     <connections>
                         <segue destination="INy-Ub-eTq" kind="relationship" relationship="masterViewController" id="7iC-Ev-zDb"/>
                         <segue destination="6Gg-9O-LPL" kind="relationship" relationship="detailViewController" id="sUY-p6-YbS"/>
                     </connections>
                 </splitViewController>
             </objects>
-            <point key="canvasLocation" x="-1851" y="-436"/>
+            <point key="canvasLocation" x="-3229" y="-288"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="W7B-IS-Ihm">
@@ -294,7 +296,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-869" y="-1419"/>
+            <point key="canvasLocation" x="-2247" y="-1271"/>
         </scene>
         <!--Navigation Controller - Recents-->
         <scene sceneID="0iv-Yd-wwQ">
@@ -313,7 +315,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-327" y="-853"/>
+            <point key="canvasLocation" x="-1705" y="-705"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q6m-8Q-xxI">
@@ -331,7 +333,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-869" y="192"/>
+            <point key="canvasLocation" x="-2247" y="340"/>
         </scene>
     </scenes>
     <resources>
@@ -370,6 +372,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FfJ-Ja-RtB"/>
+        <segue reference="xaQ-6t-0TW"/>
+        <segue reference="u5J-eu-vGx"/>
     </inferredMetricsTieBreakers>
 </document>

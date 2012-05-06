@@ -68,6 +68,15 @@
                 });
             });
             dispatch_release(photosQueue);
+        } else {
+            if ([segue.identifier isEqualToString:@"Show Photos for Place Annotation on iPad"]) {                
+                UITabBarController *master = [self.splitViewController.viewControllers objectAtIndex:0];
+                UINavigationController *masterNav = [master.viewControllers objectAtIndex:0];
+                PlacesTableViewController *placesTableViewController = [masterNav.viewControllers objectAtIndex:0];
+                placesTableViewController.chosenPlace = self.chosenAnnotation.photo;
+                NSLog(@"placesTableViewContter%@",placesTableViewController);
+                NSLog(@"placesTableViewController.chosenPlace:%@",placesTableViewController.chosenPlace);
+            }
         }
     }
 }
@@ -90,6 +99,8 @@
     } else {  // Annotation is for a place
         if (!self.splitViewController) { // not iPad
             [self performSegueWithIdentifier:@"Show Photos for Place Annotation" sender:view.annotation];
+        } else {
+            [self performSegueWithIdentifier:@"Show Photos for Place Annotation on iPad" sender:view.annotation];
         }
     }
 }
