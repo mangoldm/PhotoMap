@@ -13,6 +13,7 @@
 @end
 
 @implementation PhotosTabBar
+@synthesize chosenPlace = _chosenPlace;
 
 - (id <SplitViewBarButtonItemPresenter>)splitViewBarButtonItemPresenter
 {
