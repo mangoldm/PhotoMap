@@ -53,7 +53,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-169" y="-589"/>
+            <point key="canvasLocation" x="1011" y="491"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="Guw-u6-0rb">
@@ -72,7 +72,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items/>
-                                <color key="tintColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -87,7 +86,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2247" y="352"/>
+            <point key="canvasLocation" x="-2031" y="284"/>
         </scene>
         <!--Places Table View Controller - Top Places-->
         <scene sceneID="SdJ-Et-0By">
@@ -143,7 +142,7 @@
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-1234" y="-1860"/>
+            <point key="canvasLocation" x="-30" y="-1292"/>
         </scene>
         <!--Photos Table View Controller - Place Recents-->
         <scene sceneID="v1e-po-W1Z">
@@ -156,7 +155,7 @@
                         <color key="backgroundColor" red="1" green="0.95436228140000001" blue="0.68379633399999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="WsH-tU-qEa">
-                            <rect key="frame" x="0.0" y="66" width="320" height="37"/>
+                            <rect key="frame" x="0.0" y="66" width="320" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                         </activityIndicatorView>
@@ -198,7 +197,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-755" y="-1860"/>
+            <point key="canvasLocation" x="449" y="-1292"/>
         </scene>
         <!--Photos Table View Controller - Recently Viewed-->
         <scene sceneID="rSg-Fk-9tL">
@@ -254,7 +253,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-1234" y="-705"/>
+            <point key="canvasLocation" x="-30" y="-257"/>
         </scene>
         <!--Navigation Controller - Top Places-->
         <scene sceneID="Zjd-v5-0YD">
@@ -270,7 +269,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-1713" y="-1860"/>
+            <point key="canvasLocation" x="-509" y="-1292"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="dgb-58-qTB">
@@ -285,7 +284,7 @@
                     </connections>
                 </splitViewController>
             </objects>
-            <point key="canvasLocation" x="-3229" y="-288"/>
+            <point key="canvasLocation" x="-3009" y="-784"/>
         </scene>
         <!--Photos Tab Bar - Browse-->
         <scene sceneID="W7B-IS-Ihm">
@@ -303,7 +302,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-2247" y="-1271"/>
+            <point key="canvasLocation" x="-1043" y="-703"/>
         </scene>
         <!--Navigation Controller - Recents-->
         <scene sceneID="0iv-Yd-wwQ">
@@ -322,7 +321,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-1705" y="-705"/>
+            <point key="canvasLocation" x="-509" y="-257"/>
         </scene>
     </scenes>
     <resources>
@@ -365,7 +364,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xaQ-6t-0TW"/>
         <segue reference="u5J-eu-vGx"/>
+        <segue reference="xaQ-6t-0TW"/>
     </inferredMetricsTieBreakers>
 </document>

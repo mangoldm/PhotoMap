@@ -11,8 +11,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "FlickrFetcher.h"
 #import "FlickrPhotoAnnotation.h"
 #import "SplitViewBarButtonItemPresenter.h"
+#import "PlacesTableViewController.h"
+#import "PhotosTableViewController.h"
+#import "PhotosTabBar.h"
 
 @class MapViewController;
 @protocol MapViewControllerDelegate <NSObject>
@@ -23,4 +27,5 @@
 @property (nonatomic, strong)        NSArray                    *annotations; // of id <MKAnnotation>
 @property (nonatomic, strong)        FlickrPhotoAnnotation      *chosenAnnotation;
 @property (nonatomic, weak) id       <MapViewControllerDelegate> delegate;
+@property (nonatomic) BOOL                                       chosePlaceAnnotation; // Controls segue fallthrough
 @end

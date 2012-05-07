@@ -105,42 +105,80 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // Display a list of photos that match a given place
     if ([[segue identifier] isEqualToString:@"Show Photos"])
     {
-        // Get place and cell from selected row
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        UITableViewCell *cell  = [self.tableView cellForRowAtIndexPath:indexPath];
-        id place = [self.places objectAtIndex:indexPath.row];
-        
-        // Create spinning 'wait' indicator and place in cell
-        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        [cell addSubview:spinner];
-        spinner.frame = CGRectMake(0, 0, 24, 24);
-        cell.accessoryView = spinner;
-        [spinner startAnimating];
-        
-        // Get reference to the destination view controller and pass the list of photos
-        PhotosTableViewController *photosTableViewController = [segue destinationViewController];
-        __block NSArray *tempPhotos;
-        dispatch_queue_t photosQueue = dispatch_queue_create("photos downloader", NULL);
-        dispatch_async(photosQueue, ^{
-            tempPhotos = [FlickrFetcher photosInPlace:place maxResults:50];
-            
-            // Construct the place name, used as the destination view controller's title
-            NSString *tempPlaceName   = [place objectForKey:FLICKR_PLACE_NAME];
-            NSArray  *parsedPlaces    = [tempPlaceName componentsSeparatedByString:@","];
-            NSString *placeName       = [parsedPlaces objectAtIndex:0];
-            
-            // Send photos to the destination view controller via the main thread
-            dispatch_async(dispatch_get_main_queue(),^{
-                photosTableViewController.photos = tempPhotos;
-                photosTableViewController.title  = placeName;
-            });
-        });
-        dispatch_release(photosQueue);
-        [spinner stopAnimating]; // turn off spinning wait indicator
-        cell.accessoryView = nil; // restore accessoryView
+        // Determine if segued from master or detail
+        id detail = [self.splitViewController.viewControllers lastObject];
+        if ([detail isKindOfClass:[MapViewController class]]) {
+            MapViewController *mapViewController = detail;
+            if (mapViewController.chosePlaceAnnotation) { // if segued from map
+                
+                // Display a list of photos that match the given place (selected from a map annotation callout)
+                // First, get place from map
+                MapViewController *detail = [self.splitViewController.viewControllers lastObject];                                    
+                id place = detail.chosenAnnotation.photo;
+                
+                // Get reference to the destination view controller and pass the list of photos
+                PhotosTableViewController *photosTableViewController = [segue destinationViewController];
+                __block NSArray *tempPhotos;
+                dispatch_queue_t photosQueue = dispatch_queue_create("photos downloader", NULL);
+                dispatch_async(photosQueue, ^{
+                    tempPhotos = [FlickrFetcher photosInPlace:place maxResults:50];
+                    
+                    // Construct the place name, used as the destination view controller's title
+                    NSString *tempPlaceName   = [place objectForKey:FLICKR_PLACE_NAME];
+                    NSArray  *parsedPlaces    = [tempPlaceName componentsSeparatedByString:@","];
+                    NSString *placeName       = [parsedPlaces objectAtIndex:0];
+                    
+                    // Send photos to the destination view controller via the main thread
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        photosTableViewController.photos = tempPhotos;
+                        photosTableViewController.title  = placeName;
+                    });
+                });
+                dispatch_release(photosQueue);
+                
+            } else {  // Segued from PlacesTableViewController
+                
+                // Get place and cell from selected row
+                NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+                UITableViewCell *cell  = [self.tableView cellForRowAtIndexPath:indexPath];
+                id place = [self.places objectAtIndex:indexPath.row];
+                
+                // Create spinning 'wait' indicator and place in cell
+                UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+                [cell addSubview:spinner];
+                spinner.frame = CGRectMake(0, 0, 24, 24);
+                cell.accessoryView = spinner;
+                [spinner startAnimating];
+                
+                // Get reference to the destination view controller and pass the list of photos
+                PhotosTableViewController *photosTableViewController = [segue destinationViewController];
+                __block NSArray *tempPhotos;
+                dispatch_queue_t photosQueue = dispatch_queue_create("photos downloader", NULL);
+                dispatch_async(photosQueue, ^{
+                    tempPhotos = [FlickrFetcher photosInPlace:place maxResults:50];
+                    
+                    // Construct the place name, used as the destination view controller's title
+                    NSString *tempPlaceName   = [place objectForKey:FLICKR_PLACE_NAME];
+                    NSArray  *parsedPlaces    = [tempPlaceName componentsSeparatedByString:@","];
+                    NSString *placeName       = [parsedPlaces objectAtIndex:0];
+                    
+                    // Send photos to the destination view controller via the main thread
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        photosTableViewController.photos = tempPhotos;
+                        photosTableViewController.title  = placeName;
+                    });
+                });
+                dispatch_release(photosQueue);
+                [spinner stopAnimating]; // turn off spinning wait indicator
+                cell.accessoryView = nil; // restore accessoryView
+            }
+        }        
     } else {
+        
+        // Map annotations for a given place (iPhone)
         if ([[segue identifier] isEqualToString:@"Map Places"] || [[segue identifier] isEqualToString:@"Map Recent Photos"]) {
             MapViewController *mapVC = segue.destinationViewController;
             mapVC.annotations        = [self mapAnnotations];
@@ -176,6 +214,20 @@
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
     if (self.places) {
         [self updateSplitViewDetail];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:NO];
+    
+    // Check if segued from place annotation callout accessory
+    id detail = [self.splitViewController.viewControllers lastObject];
+    if ([detail isKindOfClass:[MapViewController class]]) {
+        MapViewController *mapViewController = detail;
+        if (mapViewController.chosePlaceAnnotation) {
+            [self performSegueWithIdentifier:@"Show Photos" sender:self];
+        }
     }
 }
 

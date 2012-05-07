@@ -8,9 +8,6 @@
 //
 
 #import "MapViewController.h"
-#import "FlickrFetcher.h"
-#import "PlacesTableViewController.h"
-#import "PhotosTableViewController.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -24,6 +21,7 @@
 @synthesize chosenAnnotation       = _chosenAnnotation;
 @synthesize toolbar                = _toolbar;
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
+@synthesize chosePlaceAnnotation   = _chosePlaceAnnotation;
 
 - (void)updateMapView
 {
@@ -57,9 +55,12 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // Show the image
     if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation"]) {
         [segue.destinationViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
     } else {
+        
+        // Show photos for a place
         if ([segue.identifier isEqualToString: @"Show Photos for Place Annotation"]) {            
             id place = self.chosenAnnotation.photo;
             
@@ -83,11 +84,10 @@
             });
             dispatch_release(photosQueue);
         } else {
-            if ([segue.identifier isEqualToString:@"Show Photos for Place Annotation on iPad"]) {                
-                UITabBarController *master = [self.splitViewController.viewControllers objectAtIndex:0];
-                UINavigationController *masterNav = [master.viewControllers objectAtIndex:0];
-                PlacesTableViewController *placesTableViewController = [masterNav.viewControllers objectAtIndex:0];
-                placesTableViewController.chosenPlace = self.chosenAnnotation.photo;
+            
+            // Loop back and update the list of photos for a place on the master from the detail
+            if ([segue.identifier isEqualToString:@"Show Photos for Place Annotation on iPad"]) {
+                self.chosePlaceAnnotation = YES;
             }
         }
     }
@@ -217,6 +217,12 @@
 {
     [super viewWillAppear:NO];
     self.toolbar.tintColor = DEFAULT_COLOR;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:NO];
+    self.chosePlaceAnnotation = NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

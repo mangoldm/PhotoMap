@@ -12,7 +12,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEb-Be-ZtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="JQ9-oG-08d" customClass="PhotosTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="omu-JT-K2A">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95119942179999994" green="0.95471938779999999" blue="0.73132307630000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.59607845544815063" green="0.24705883860588074" blue="0.08235294371843338" alpha="1" colorSpace="deviceRGB"/>
@@ -207,11 +207,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKf-oW-nzm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="3Ff-Yw-BS3" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HSg-Cn-R34">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="lif-7a-vc6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -345,8 +345,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fZW-9u-02X"/>
         <segue reference="sQ2-IH-eOH"/>
-        <segue reference="pDQ-BO-96K"/>
+        <segue reference="Ok3-mC-APH"/>
+        <segue reference="0zi-Eq-bjv"/>
     </inferredMetricsTieBreakers>
 </document>
