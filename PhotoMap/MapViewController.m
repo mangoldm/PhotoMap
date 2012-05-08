@@ -85,7 +85,7 @@
             dispatch_release(photosQueue);
         } else {
             
-            // Loop back and update the list of photos for a place on the master from the detail
+            // Loop back and update PhotosTableViewController for a place
             if ([segue.identifier isEqualToString:@"Show Photos for Place Annotation on iPad"]) {
                 self.chosePlaceAnnotation = YES;
             }

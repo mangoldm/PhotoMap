@@ -29,6 +29,7 @@
     if ([detail isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController *)detail;
         mapVC.annotations = [self mapAnnotations];
+        mapVC.chosePlaceAnnotation = NO;
     }
 }
 
