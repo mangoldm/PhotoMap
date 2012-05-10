@@ -176,7 +176,7 @@
                     });
                 });
                 dispatch_release(photosQueue);
-                [spinner stopAnimating]; // turn off spinning wait indicator
+                [spinner stopAnimating];  // turn off spinning wait indicator
                 cell.accessoryView = nil; // restore accessoryView
             }
         }        
@@ -214,24 +214,32 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    BOOL updateRecentPlaces;
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
     
-    // Check if segued from place annotation callout accessory
-    id detail = [self.splitViewController.viewControllers lastObject];
-    if ([detail isKindOfClass:[MapViewController class]]) {
-        MapViewController *mapViewController = detail;
-        if (!mapViewController.chosePlaceAnnotation) {
-            if (self.places) {
-                [self.tableView reloadData];
-                [self updateSplitViewDetail];
-            } else {
-                [self RecentPlaces];
+    // If segued from place annotation callout accessory on iPad, just pass through to the photosTableViewController.
+    // Otherwise, update the list of recent places from Flickr
+    if (self.splitViewController) {
+        id detail = [self.splitViewController.viewControllers lastObject];
+        if ([detail isKindOfClass:[MapViewController class]]) {
+            MapViewController *mapViewController = detail;
+            if (!mapViewController.chosePlaceAnnotation) {
+                updateRecentPlaces = YES;
             }
         }
+    } else {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) updateRecentPlaces = YES;
     }
-    
-}
+    if (updateRecentPlaces) {
+        if (self.places) {
+            [self.tableView reloadData];
+            [self updateSplitViewDetail];
+        } else {
+            [self RecentPlaces];
+        }
+    }
+}  
 
 - (void)viewDidAppear:(BOOL)animated
 {
