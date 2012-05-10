@@ -15,7 +15,8 @@
 @end
 
 @implementation PlacesTableViewController
-@synthesize places = _places;
+@synthesize spinner     = _spinner;
+@synthesize places      = _places;
 @synthesize chosenPlace = _chosenPlace;
 
 - (void)updateSplitViewDetail
@@ -36,13 +37,10 @@
     }
 }
 
-// Refresh button on "Top Places" tab.
-- (IBAction)refresh:(id)sender
+- (NSArray *)RecentPlaces;
 {
-    // Create spinning 'wait' indicator
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [spinner startAnimating];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    NSArray * recentPlaces = [[NSArray alloc] init];
+    [self.spinner startAnimating];
     
     // create GCD queue then dispatch
     dispatch_queue_t downloadQueue = dispatch_queue_create("flickr downloader", NULL);
@@ -56,11 +54,18 @@
         
         // keep UI processing on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.leftBarButtonItem = sender; // Turn off spinning indicator
+            [self.spinner stopAnimating];
             self.places	= sortedPlacesArray;
         });
     });
     dispatch_release(downloadQueue);
+    return recentPlaces;
+}
+
+// Refresh button on "Top Places" tab.
+- (IBAction)refresh:(id)sender
+{
+    [self RecentPlaces];
 }
 
 #pragma mark - Table view data source
@@ -214,13 +219,14 @@
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
     if (self.places) {
         [self updateSplitViewDetail];
+    } else {
+        [self RecentPlaces];
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
-    
     // Check if segued from place annotation callout accessory
     id detail = [self.splitViewController.viewControllers lastObject];
     if ([detail isKindOfClass:[MapViewController class]]) {

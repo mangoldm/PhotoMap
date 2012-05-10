@@ -98,6 +98,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.95436228140000001" blue="0.68379633399999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="1Qp-0M-mN0">
+                            <rect key="frame" x="0.0" y="66" width="320" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Place" textLabel="y0O-Fv-UPB" detailTextLabel="Na8-Ot-NU6" style="IBUITableViewCellStyleSubtitle" id="dgv-E6-N7N">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -140,6 +145,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="spinner" destination="1Qp-0M-mN0" id="kdv-Ue-Wn8"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-30" y="-1292"/>
@@ -347,6 +355,9 @@
         </class>
         <class className="PlacesTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
         </class>
         <class className="ScrollingPhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollingPhotoViewController.h"/>
@@ -364,7 +375,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="u5J-eu-vGx"/>
         <segue reference="xaQ-6t-0TW"/>
+        <segue reference="syE-6f-fM9"/>
     </inferredMetricsTieBreakers>
 </document>

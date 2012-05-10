@@ -60,7 +60,7 @@
         [segue.destinationViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
     } else {
         
-        // Show photos for a place
+        // Show photos for a place on iPhone
         if ([segue.identifier isEqualToString: @"Show Photos for Place Annotation"]) {            
             id place = self.chosenAnnotation.photo;
             
@@ -85,7 +85,7 @@
             dispatch_release(photosQueue);
         } else {
             
-            // Loop back and update PhotosTableViewController for a place
+            // Loop back and update PhotosTableViewController for a place on iPad
             if ([segue.identifier isEqualToString:@"Show Photos for Place Annotation on iPad"]) {
                 self.chosePlaceAnnotation = YES;
             }
