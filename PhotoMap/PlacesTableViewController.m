@@ -37,9 +37,9 @@
     }
 }
 
-- (NSArray *)RecentPlaces;
+// Sets self.places to the 50 most recent places on Flickr
+- (void)RecentPlaces;
 {
-    NSArray * recentPlaces = [[NSArray alloc] init];
     [self.spinner startAnimating];
     
     // create GCD queue then dispatch
@@ -55,11 +55,10 @@
         // keep UI processing on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.spinner stopAnimating];
-            self.places	= sortedPlacesArray;
+            self.places = sortedPlacesArray;
         });
     });
     dispatch_release(downloadQueue);
-    return recentPlaces;
 }
 
 // Refresh button on "Top Places" tab.
@@ -218,6 +217,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
     if (self.places) {
+        [self.tableView reloadData];
         [self updateSplitViewDetail];
     } else {
         [self RecentPlaces];
