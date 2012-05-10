@@ -216,17 +216,27 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
-    if (self.places) {
-        [self.tableView reloadData];
-        [self updateSplitViewDetail];
-    } else {
-        [self RecentPlaces];
+    
+    // Check if segued from place annotation callout accessory
+    id detail = [self.splitViewController.viewControllers lastObject];
+    if ([detail isKindOfClass:[MapViewController class]]) {
+        MapViewController *mapViewController = detail;
+        if (!mapViewController.chosePlaceAnnotation) {
+            if (self.places) {
+                [self.tableView reloadData];
+                [self updateSplitViewDetail];
+            } else {
+                [self RecentPlaces];
+            }
+        }
     }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
+    
     // Check if segued from place annotation callout accessory
     id detail = [self.splitViewController.viewControllers lastObject];
     if ([detail isKindOfClass:[MapViewController class]]) {
