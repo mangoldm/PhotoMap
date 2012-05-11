@@ -174,7 +174,7 @@
     if (!self.title) {
         self.title = @"Recently Viewed";
     }
-    if (self.photos) {
+    if (self.splitViewController && self.photos) {
         [self updateSplitViewDetail];
     }
 }
