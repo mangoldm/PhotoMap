@@ -173,14 +173,14 @@
             break;
         case 6: // Show Photos from Table on iPad
         {
-            // Check if segued from place annotation callout accessory
+            // Check if this is a passthrough from place annotation callout accessory
             id detail = [self.splitViewController.viewControllers lastObject];
             if ([detail isKindOfClass:[MapViewController class]]) {
                 MapViewController *mapViewController = detail;
                 if (mapViewController.chosePlaceAnnotation) { // if segued from map
                     MapViewController *detail = [self.splitViewController.viewControllers lastObject];                                    
                     place = detail.chosenAnnotation.photo;
-                } else {
+                } else { // Regular workflow
                     // Get reference to the place and the table cell
                     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
                     place = [self.places objectAtIndex:indexPath.row];
@@ -346,6 +346,8 @@
             MapViewController *mapViewController = detail;
             if (!mapViewController.chosePlaceAnnotation) {
                 updateRecentPlaces = YES;
+            } else {
+                updateRecentPlaces = NO;
             }
         }
     } else {
