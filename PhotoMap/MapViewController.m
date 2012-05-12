@@ -110,7 +110,7 @@
         [self performSegueWithIdentifier:@"Show Image For Photo Annotation" sender:view.annotation];
     } else {  // Annotation is for a place
         if (!self.splitViewController) { // not iPad
-            [self performSegueWithIdentifier:@"Show Photos for Place Annotation" sender:view.annotation];
+            [self performSegueWithIdentifier:@"Show Photos for Place Annotation on iPhone" sender:view.annotation];
         } else {
             [self performSegueWithIdentifier:@"Show Photos for Place Annotation on iPad" sender:view.annotation];
         }

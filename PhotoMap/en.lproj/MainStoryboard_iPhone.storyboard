@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="cep-mf-gnJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="cep-mf-gnJ">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -12,7 +12,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEb-Be-ZtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="JQ9-oG-08d" customClass="PhotosTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="omu-JT-K2A">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95119942179999994" green="0.95471938779999999" blue="0.73132307630000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.59607845544815063" green="0.24705883860588074" blue="0.08235294371843338" alpha="1" colorSpace="deviceRGB"/>
@@ -62,7 +62,7 @@
                     <navigationItem key="navigationItem" title="Place Recents" id="XQ4-KR-QQS">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="7W6-lp-alT">
                             <connections>
-                                <segue destination="3Ff-Yw-BS3" kind="push" identifier="Map Photos" id="KIN-U5-08j"/>
+                                <segue destination="3Ff-Yw-BS3" kind="push" identifier="Map Photos for Place Recents on iPhone" id="KIN-U5-08j"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -156,7 +156,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="JQ9-oG-08d" kind="push" identifier="Show Photos" id="0zi-Eq-bjv"/>
+                                    <segue destination="JQ9-oG-08d" kind="push" identifier="Show Photos from Table on iPhone" id="0zi-Eq-bjv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -172,7 +172,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="Qu0-j3-c3w">
                             <connections>
-                                <segue destination="3Ff-Yw-BS3" kind="push" identifier="Map Places" id="Ok3-mC-APH"/>
+                                <segue destination="3Ff-Yw-BS3" kind="push" identifier="Map Places from Table on iPhone" id="Ok3-mC-APH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -207,11 +207,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKf-oW-nzm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="3Ff-Yw-BS3" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HSg-Cn-R34">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="lif-7a-vc6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -220,8 +220,8 @@
                     <navigationItem key="navigationItem" id="GpG-k4-ZNB"/>
                     <connections>
                         <outlet property="mapView" destination="lif-7a-vc6" id="knx-XI-Tex"/>
-                        <segue destination="AJG-VL-9y6" kind="push" identifier="Show Image For Photo Annotation" id="pxA-Ay-Iy0"/>
-                        <segue destination="JQ9-oG-08d" kind="push" identifier="Show Photos for Place Annotation" id="pDQ-BO-96K"/>
+                        <segue destination="AJG-VL-9y6" kind="push" identifier="Show Image For Photo Annotation on iPhone" id="pxA-Ay-Iy0"/>
+                        <segue destination="JQ9-oG-08d" kind="push" identifier="Show Photos for Place Annotation on iPhone" id="pDQ-BO-96K"/>
                     </connections>
                 </viewController>
             </objects>
@@ -324,7 +324,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="3oJ-Cf-bdM">
                             <connections>
-                                <segue destination="3Ff-Yw-BS3" kind="push" identifier="Map Recent Photos" id="fZW-9u-02X"/>
+                                <segue destination="3Ff-Yw-BS3" kind="push" identifier="Map Recent Photos on iPhone" id="fZW-9u-02X"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -339,14 +339,39 @@
         <image name="clock.png" width="26" height="26"/>
         <image name="world.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="PhotosTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="PlacesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="ScrollingPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollingPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissPhoto:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="sQ2-IH-eOH"/>
-        <segue reference="Ok3-mC-APH"/>
-        <segue reference="0zi-Eq-bjv"/>
-    </inferredMetricsTieBreakers>
 </document>
