@@ -56,7 +56,8 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Show the image
-    if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation"]) {
+    if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPhone"]
+        || [segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPad"]) {
         [segue.destinationViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
     } else {
         
@@ -107,7 +108,11 @@
     // Determine if the annotation is for an image or a place
     NSString *photoID = [photo valueForKey:FLICKR_PHOTO_ID];
     if (photoID) { // Annotation is for an image
-        [self performSegueWithIdentifier:@"Show Image For Photo Annotation" sender:view.annotation];
+        if (self.splitViewController) {
+            [self performSegueWithIdentifier:@"Show Image for Photo Annotation on iPad" sender:view.annotation];
+        } else {
+            [self performSegueWithIdentifier:@"Show Image For Photo Annotation on iPhone" sender:view.annotation];
+        }
     } else {  // Annotation is for a place
         if (!self.splitViewController) { // not iPad
             [self performSegueWithIdentifier:@"Show Photos for Place Annotation on iPhone" sender:view.annotation];

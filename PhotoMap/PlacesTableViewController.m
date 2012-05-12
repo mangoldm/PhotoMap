@@ -171,27 +171,6 @@
             
         }
             break;
-        case 6: // Show Photos from Table on iPad
-        {
-            // Check if this is a passthrough from place annotation callout accessory
-            id detail = [self.splitViewController.viewControllers lastObject];
-            if ([detail isKindOfClass:[MapViewController class]]) {
-                MapViewController *mapViewController = detail;
-                if (mapViewController.chosePlaceAnnotation) { // if segued from map
-                    MapViewController *detail = [self.splitViewController.viewControllers lastObject];                                    
-                    place = detail.chosenAnnotation.photo;
-                } else { // Regular workflow
-                    // Get reference to the place and the table cell
-                    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-                    place = [self.places objectAtIndex:indexPath.row];
-                }
-            }
-            
-            // Pass the list of photos for the place to the destination view controller
-            PhotosTableViewController *photosTableViewController = [segue destinationViewController];
-            [self sendPhotosForPlace:place toViewController:photosTableViewController];
-        }
-            break;
         case 1: // Map Places from Table on iPhone
         case 2: // Map Recent Photos on iPhone
         case 4: // Map Photos for Place Recents on iPhone
@@ -230,6 +209,27 @@
             
             // Get reference to the place and pass its list of photos to the destination view controller                                   
             place = detail.chosenAnnotation.photo;
+            PhotosTableViewController *photosTableViewController = [segue destinationViewController];
+            [self sendPhotosForPlace:place toViewController:photosTableViewController];
+        }
+            break;
+        case 6: // Show Photos from Table on iPad
+        {
+            // Check if this is a passthrough from place annotation callout accessory
+            id detail = [self.splitViewController.viewControllers lastObject];
+            if ([detail isKindOfClass:[MapViewController class]]) {
+                MapViewController *mapViewController = detail;
+                if (mapViewController.chosePlaceAnnotation) { // if segued from map
+                    MapViewController *detail = [self.splitViewController.viewControllers lastObject];                                    
+                    place = detail.chosenAnnotation.photo;
+                } else { // Regular workflow
+                    // Get reference to the place and the table cell
+                    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+                    place = [self.places objectAtIndex:indexPath.row];
+                }
+            }
+            
+            // Pass the list of photos for the place to the destination view controller
             PhotosTableViewController *photosTableViewController = [segue destinationViewController];
             [self sendPhotosForPlace:place toViewController:photosTableViewController];
         }

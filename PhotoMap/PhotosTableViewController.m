@@ -66,14 +66,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"Map Photos"] || [[segue identifier] isEqualToString:@"Map Recent Photos"]) {
+    if ([[segue identifier] hasPrefix:@"Map Photos"] || [[segue identifier] hasPrefix:@"Map Recent Photos"]) {
         MapViewController *mapVC = segue.destinationViewController;
         mapVC.annotations = [self mapAnnotations];
         mapVC.delegate = self;
         mapVC.title = self.title;
     } else {
-        if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation"] ||
-            [segue.identifier isEqualToString: @"Show Image From Table"]) {
+        if ([segue.identifier hasPrefix: @"Show Image For Photo Annotation"] ||
+            [segue.identifier hasPrefix: @"Show Image From Table"]) {
             [segue.destinationViewController viewController:self chosePhoto:self.chosenPhoto];
         }
     }
