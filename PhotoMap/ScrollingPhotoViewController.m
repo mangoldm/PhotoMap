@@ -205,8 +205,10 @@
             if (self.parentViewController) { // if iPhone
                 if (photoInCache) {
                     self.navigationController.navigationBar.tintColor = CACHE_COLOR;
+                    self.scrollView.backgroundColor = CACHE_COLOR;
                 } else {
                     self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+                    self.scrollView.backgroundColor = DEFAULT_COLOR;
                 }
             } else {  // if iPad
                 if (photoInCache) {

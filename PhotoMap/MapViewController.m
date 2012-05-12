@@ -62,7 +62,7 @@
     } else {
         
         // Show photos for a place on iPhone
-        if ([segue.identifier isEqualToString: @"Show Photos for Place Annotation"]) {            
+        if ([segue.identifier isEqualToString: @"Show Photos for Place Annotation on iPhone"]) {            
             id place = self.chosenAnnotation.photo;
             
             // Get reference to the destination view controller and pass the list of photos

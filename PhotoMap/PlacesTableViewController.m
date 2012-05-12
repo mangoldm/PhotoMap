@@ -145,7 +145,6 @@
     if ([[segue identifier] isEqualToString:@"Show Image from Table on iPad"])              segueIndentifier = 8;
     if ([[segue identifier] isEqualToString:@"Show Image from Recently Viewed on iPad"])    segueIndentifier = 9;
     
-    
     switch (segueIndentifier) {
         case 0: // Show Photos from Table on iPhone
         {
@@ -173,36 +172,15 @@
             break;
         case 1: // Map Places from Table on iPhone
         case 2: // Map Recent Photos on iPhone
+        case 3: // Show Photos for Place Annotation on iPhone
         case 4: // Map Photos for Place Recents on iPhone
         {
-            // Get place and cell from selected row
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            UITableViewCell *cell  = [self.tableView cellForRowAtIndexPath:indexPath];
-            place = [self.places objectAtIndex:indexPath.row];
-            
-            // Create spinning 'wait' indicator and place in cell
-            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-            [cell addSubview:spinner];
-            spinner.frame = CGRectMake(0, 0, 24, 24);
-            cell.accessoryView = spinner;
-            [spinner startAnimating];
-            
-            // Get reference to the destination view controller and pass the list of photos
-            PhotosTableViewController *photosTableViewController = [segue destinationViewController];
-            [self sendPhotosForPlace:place toViewController:photosTableViewController];
-            [spinner stopAnimating];  // turn off spinning wait indicator
-            cell.accessoryView = nil; // restore accessoryView
-            
-            // Map annotations for a given place (iPhone)
-            if ([[segue identifier] isEqualToString:@"Map Places"] || [[segue identifier] isEqualToString:@"Map Recent Photos"]) {
-                MapViewController *mapVC = segue.destinationViewController;
-                mapVC.annotations        = [self mapAnnotations];
-                mapVC.delegate           = self;
-                mapVC.title              = self.navigationItem.title;
-            }
+            MapViewController *mapVC = segue.destinationViewController;
+            mapVC.annotations        = [self mapAnnotations];
+            mapVC.delegate           = self;
+            mapVC.title              = self.navigationItem.title;
         }
             break;
-        case 3: // Show Photos for Place Annotation on iPhone
         case 5: // Show Photos for Place Annotation on iPad
         {
             MapViewController *detail = [self.splitViewController.viewControllers lastObject]; 
