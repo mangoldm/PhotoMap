@@ -10,17 +10,17 @@
         <scene sceneID="hey-Ic-E52">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKa-Vf-Zoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="8OC-qW-Jjz" customClass="ScrollingPhotoViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="8OC-qW-Jjz" customClass="ScrollingPhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YIA-5H-gHM">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
-                                <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" id="QEI-DH-zQk">
-                                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <gestureRecognizers/>
                                         <connections>
@@ -53,7 +53,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1011" y="491"/>
+            <point key="canvasLocation" x="1969" y="284"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="Guw-u6-0rb">
@@ -81,7 +81,7 @@
                     <connections>
                         <outlet property="mapView" destination="EGE-dL-6Dh" id="tsn-Jv-QkS"/>
                         <outlet property="toolbar" destination="gLD-we-dkv" id="3Oh-x7-ytO"/>
-                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image for Photo Annotation on iPad" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="u5J-eu-vGx"/>
+                        <segue destination="x8P-VR-umA" kind="modal" identifier="Show Image for Photo Annotation on iPad" id="u5J-eu-vGx"/>
                         <segue destination="INy-Ub-eTq" kind="replace" identifier="Show Photos for Place Annotation on iPad" splitViewControllerTargetIndex="0" id="xaQ-6t-0TW"/>
                     </connections>
                 </viewController>
@@ -201,7 +201,7 @@
                     <navigationItem key="navigationItem" title="Place Recents" id="hSr-N2-R5m"/>
                     <connections>
                         <outlet property="spinner" destination="WsH-tU-qEa" id="Sq8-kV-rw3"/>
-                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image From Table on iPad" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="syE-6f-fM9"/>
+                        <segue destination="x8P-VR-umA" kind="modal" identifier="Show Image From Table on iPad" id="syE-6f-fM9"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -257,7 +257,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="8OC-qW-Jjz" kind="modal" identifier="Show Image from Recently Viewed on iPad" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="FfJ-Ja-RtB"/>
+                        <segue destination="x8P-VR-umA" kind="modal" identifier="Show Image from Recently Viewed on iPad" id="FfJ-Ja-RtB"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -330,6 +330,24 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="-509" y="-257"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OJT-HB-fJf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcU-x6-B65" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController modalTransitionStyle="flipHorizontal" id="x8P-VR-umA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OVt-PT-Hk8">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8OC-qW-Jjz" kind="relationship" relationship="rootViewController" id="M9g-Vs-00U"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="995" y="284"/>
         </scene>
     </scenes>
     <resources>

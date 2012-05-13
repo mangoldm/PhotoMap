@@ -275,7 +275,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.navigationController) { // If not iPad
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // iPhone
         // reference the calling view controller and set its delegate to self
         NSUInteger viewControllerCount = [self.navigationController.viewControllers count];
         PhotosTableViewController *callingViewController = [self.navigationController.viewControllers objectAtIndex:viewControllerCount - 2];

@@ -66,6 +66,36 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // Build switch values for segue identifier
+    int segueIndentifier;
+    if ([[segue identifier] isEqualToString:@"Show Image from Table on iPhone"])           segueIndentifier = 0;
+    if ([[segue identifier] isEqualToString:@"Show Image For Photo Annotation on iPhone"]) segueIndentifier = 1;
+    if ([[segue identifier] isEqualToString:@"Show Image from Recently Viewed on iPhone"]) segueIndentifier = 2;
+    if ([[segue identifier] isEqualToString:@"Show Image From Table on iPad"])             segueIndentifier = 3;
+    if ([[segue identifier] isEqualToString:@"Show Image from Recently Viewed on iPad"])   segueIndentifier = 4;
+    if ([[segue identifier] isEqualToString:@"Show Image for Photo Annotation on iPad"])   segueIndentifier = 5;
+    
+    switch (segueIndentifier) {
+        case 0: // Show Image from Table on iPhone
+        case 1: // Show Image For Photo Annotation on iPhone
+        {
+            [segue.destinationViewController viewController:self chosePhoto:self.chosenPhoto];
+        }
+            break;
+            
+        case 3: // Show Image From Table on iPad
+        case 5:
+        {
+            UINavigationController *nav = segue.destinationViewController;
+            ScrollingPhotoViewController *scrollingPhotoViewController = [nav.viewControllers objectAtIndex:0];
+            [scrollingPhotoViewController viewController:self chosePhoto:self.chosenPhoto];
+        }
+            break;            
+    }
+}
+    
+- (void)prepareForSegue2:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([[segue identifier] hasPrefix:@"Map Photos"] || [[segue identifier] hasPrefix:@"Map Recent Photos"]) {
         MapViewController *mapVC = segue.destinationViewController;
         mapVC.annotations = [self mapAnnotations];
