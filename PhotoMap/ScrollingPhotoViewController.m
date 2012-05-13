@@ -275,7 +275,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // iPhone
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // If iPhone
         // reference the calling view controller and set its delegate to self
         NSUInteger viewControllerCount = [self.navigationController.viewControllers count];
         PhotosTableViewController *callingViewController = [self.navigationController.viewControllers objectAtIndex:viewControllerCount - 2];
@@ -283,7 +283,6 @@
         
         // set scrollView's frame to be the same size as the navigation controller's
         self.scrollView.frame = callingViewController.view.frame;
-        
         self.spinner.center = self.view.center;
     } else {
         self.scrollView.frame = self.view.frame;

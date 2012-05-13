@@ -201,7 +201,7 @@
                     <navigationItem key="navigationItem" title="Place Recents" id="hSr-N2-R5m"/>
                     <connections>
                         <outlet property="spinner" destination="WsH-tU-qEa" id="Sq8-kV-rw3"/>
-                        <segue destination="x8P-VR-umA" kind="modal" identifier="Show Image From Table on iPad" id="syE-6f-fM9"/>
+                        <segue destination="x8P-VR-umA" kind="modal" identifier="Show Image from Table on iPad" id="syE-6f-fM9"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -394,6 +394,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7iC-Ev-zDb"/>
-        <segue reference="FfJ-Ja-RtB"/>
+        <segue reference="syE-6f-fM9"/>
     </inferredMetricsTieBreakers>
 </document>

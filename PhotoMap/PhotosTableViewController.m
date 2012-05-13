@@ -76,7 +76,6 @@
     if ([[segue identifier] isEqualToString:@"Show Image for Photo Annotation on iPad"])   segueIndentifier = 5;
     
     switch (segueIndentifier) {
-        case 0: // Show Image from Table on iPhone
         case 1: // Show Image For Photo Annotation on iPhone
         {
             [segue.destinationViewController viewController:self chosePhoto:self.chosenPhoto];
