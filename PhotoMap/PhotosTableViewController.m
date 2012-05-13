@@ -145,7 +145,7 @@
         id detail = [self.splitViewController.viewControllers lastObject];
         if ([detail isKindOfClass:[MapViewController class]]) {
             self.chosenPhoto = [self.photos objectAtIndex:indexPath.row];
-            [self performSegueWithIdentifier:@"Show Image From Table" sender:self];
+            [self performSegueWithIdentifier:@"Show Image From Table on iPad" sender:self];
         }
     } else {
         id photo = [self.photos objectAtIndex:indexPath.row];

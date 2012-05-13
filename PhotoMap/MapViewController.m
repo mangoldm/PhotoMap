@@ -57,7 +57,7 @@
 {
     // Show the image
     if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPhone"]
-        || [segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPad"]) {
+        || [segue.identifier isEqualToString: @"Show Image for Photo Annotation on iPad"]) {
         [segue.destinationViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
     } else {
         
