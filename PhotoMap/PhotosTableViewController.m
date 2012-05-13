@@ -84,7 +84,8 @@
             break;
             
         case 3: // Show Image From Table on iPad
-        case 5:
+        case 4: // Show Image from Recently Viewed on iPad
+        case 5: // Show Image for Photo Annotation on iPad
         {
             UINavigationController *nav = segue.destinationViewController;
             ScrollingPhotoViewController *scrollingPhotoViewController = [nav.viewControllers objectAtIndex:0];
@@ -93,7 +94,7 @@
             break;            
     }
 }
-    
+
 - (void)prepareForSegue2:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] hasPrefix:@"Map Photos"] || [[segue identifier] hasPrefix:@"Map Recent Photos"]) {
@@ -175,7 +176,11 @@
         id detail = [self.splitViewController.viewControllers lastObject];
         if ([detail isKindOfClass:[MapViewController class]]) {
             self.chosenPhoto = [self.photos objectAtIndex:indexPath.row];
-            [self performSegueWithIdentifier:@"Show Image From Table on iPad" sender:self];
+            if ([self.navigationItem.title isEqualToString:@"Recently Viewed"]) {
+                [self performSegueWithIdentifier:@"Show Image from Recently Viewed on iPad" sender:self];
+            } else {
+                [self performSegueWithIdentifier:@"Show Image From Table on iPad" sender:self];
+            }
         }
     } else {
         id photo = [self.photos objectAtIndex:indexPath.row];

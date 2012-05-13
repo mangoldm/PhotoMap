@@ -56,9 +56,12 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Show the image
-    if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPhone"]
-        || [segue.identifier isEqualToString: @"Show Image for Photo Annotation on iPad"]) {
+    if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPhone"]) {
         [segue.destinationViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
+    } else if ([segue.identifier isEqualToString: @"Show Image for Photo Annotation on iPad"]) {
+        UINavigationController *nav = segue.destinationViewController;
+        ScrollingPhotoViewController *scrollingPhotoViewController = [nav.viewControllers objectAtIndex:0];
+        [scrollingPhotoViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
     } else {
         
         // Show photos for a place on iPhone

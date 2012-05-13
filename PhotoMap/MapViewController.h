@@ -17,6 +17,7 @@
 #import "PlacesTableViewController.h"
 #import "PhotosTableViewController.h"
 #import "PhotosTabBar.h"
+#import "ScrollingPhotoViewController.h"
 
 @class MapViewController;
 @protocol MapViewControllerDelegate <NSObject>
