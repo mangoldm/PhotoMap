@@ -165,7 +165,11 @@
 	
     // set navigation bar title to photo title
     self.navigationItem.title = [photo objectForKey:FLICKR_PHOTO_TITLE];
-    NSString *photoID         = [photo objectForKey:FLICKR_PHOTO_ID];
+    if ([self.navigationItem.title isEqualToString:@""]) {
+        self.navigationItem.title = @"Unknown";
+    }
+    
+    NSString *photoID = [photo objectForKey:FLICKR_PHOTO_ID];
     
     dispatch_queue_t photoQueue = dispatch_queue_create("photo downloader", NULL);
     dispatch_async(photoQueue, ^{
