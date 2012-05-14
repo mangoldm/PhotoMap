@@ -6,28 +6,28 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Scrolling Photo View Controller - Photo-->
+        <!--Scrolling Photo View Controller - Photo Title-->
         <scene sceneID="hey-Ic-E52">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKa-Vf-Zoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="8OC-qW-Jjz" customClass="ScrollingPhotoViewController" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="TopLeft" id="YIA-5H-gHM">
+                    <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="YIA-5H-gHM">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="TopLeft" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="TopLeft" id="QEI-DH-zQk">
+                                    <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="QEI-DH-zQk">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="QeJ-OP-Ylb" appends="YES" id="S21-Xb-Uvh"/>
                                         </connections>
                                     </imageView>
-                                    <activityIndicatorView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="Fwi-kr-39d">
+                                    <activityIndicatorView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="TopLeft" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="Fwi-kr-39d">
                                         <rect key="frame" x="366" y="461" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
@@ -40,7 +40,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.3549904337" green="0.12840884920000001" blue="0.01032684335" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo" id="eR4-pr-TIx"/>
+                    <navigationItem key="navigationItem" title="Photo Title" id="eR4-pr-TIx"/>
                     <connections>
                         <outlet property="imageView" destination="QEI-DH-zQk" id="vjV-1L-Sme"/>
                         <outlet property="scrollView" destination="Pvt-mc-nX0" id="vvQ-UA-qMG"/>
@@ -337,7 +337,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcU-x6-B65" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="x8P-VR-umA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OVt-PT-Hk8">
+                    <navigationBar key="navigationBar" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OVt-PT-Hk8">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -202,8 +202,8 @@
             
             // Push image to the view.
             [self.imageView setImage: image];
-            self.scrollView.contentSize = self.imageView.image.size;
-            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+            self.scrollView.contentSize = image.size;
+//            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
             
             // Append image dimensions to the title bar            
             NSString *imageWidthAsString  = [NSString stringWithFormat: @"%g", self.imageView.image.size.width];
@@ -221,47 +221,47 @@
             }
             
             // zoom to fit the image by whichever dimension is closest to the screen size
-            CGFloat w1 = self.scrollView.bounds.size.width;
-            CGFloat h1 = self.scrollView.bounds.size.height;
-            CGFloat w2 = self.imageView.image.size.width;
-            CGFloat h2 = self.imageView.image.size.height;
-            
-            CGFloat width  = w1;
-            CGFloat height = h1;
+//            CGFloat w1 = self.scrollView.bounds.size.width;
+//            CGFloat h1 = self.scrollView.bounds.size.height;
+//            CGFloat w2 = self.imageView.image.size.width;
+//            CGFloat h2 = self.imageView.image.size.height;
+//            
+//            CGFloat width  = w1;
+//            CGFloat height = h1;
             
             // Swap width and height when landscape
-            BOOL isPortrait = UIDeviceOrientationIsPortrait(self.interfaceOrientation);
-            
-            if (!isPortrait) {
-                CGFloat temp = w1;
-                w1 = h1;
-                h1 = temp;
-            }
-            
-            if (abs(w1 - w2) > abs(h1 - h2)) {
-                NSLog(@"One");
-                if (w1 > w2) {
-                    width = w2;
-                    NSLog(@"Three");
-                }
-            } else {
-                NSLog(@"Four");
-                if (h1 < h2) {
-                    height = h2;
-                    width  = w2;
-                    NSLog(@"Two");
-                }
-            }
-            
-            NSLog(@"w1:%g",w1);
-            NSLog(@"h1:%g",h1);
-            NSLog(@"w2:%g",w2);
-            NSLog(@"h2:%g",h2);
-            NSLog(@"width:%g",width);
-            NSLog(@"height:%g",height);
-            NSLog(@"-----");
-            
-            [self.scrollView zoomToRect:CGRectMake(0, 0, width, height) animated:YES];
+//            BOOL isPortrait = UIDeviceOrientationIsPortrait(self.interfaceOrientation);
+//            
+//            if (!isPortrait) {
+//                CGFloat temp = w1;
+//                w1 = h1;
+//                h1 = temp;
+//            }
+//            
+//            if (abs(w1 - w2) > abs(h1 - h2)) {
+//                NSLog(@"One");
+//                if (w1 > w2) {
+//                    width = w2;
+//                    NSLog(@"Three");
+//                }
+//            } else {
+//                NSLog(@"Four");
+//                if (h1 < h2) {
+//                    height = h2;
+//                    width  = w2;
+//                    NSLog(@"Two");
+//                }
+//            }
+//            
+//            NSLog(@"w1:%g",w1);
+//            NSLog(@"h1:%g",h1);
+//            NSLog(@"w2:%g",w2);
+//            NSLog(@"h2:%g",h2);
+//            NSLog(@"width:%g",width);
+//            NSLog(@"height:%g",height);
+//            NSLog(@"-----");
+//            
+//            [self.scrollView zoomToRect:CGRectMake(0, 0, width, height) animated:YES];
             [self.spinner stopAnimating];
         });
     });
@@ -294,7 +294,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight); // rotate subviews
+    self.scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight); // rotate subviews
     self.scrollView.delegate = self;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // If iPhone
         // reference the calling view controller and set its delegate to self
@@ -306,7 +306,7 @@
         self.scrollView.frame = callingViewController.view.frame;
         self.spinner.center = self.view.center;
     } else {
-        self.scrollView.frame = self.navigationController.view.frame;
+//        self.scrollView.frame = self.navigationController.view.frame;
     }
 }
 
@@ -317,12 +317,13 @@
 
 - (void)viewDidUnload
 {
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
     [self setImageView:nil];
     [self setScrollView:nil];
     [self setSpinner:nil];
     [self setScrollView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
