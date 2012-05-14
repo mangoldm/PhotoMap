@@ -203,42 +203,64 @@
             // Push image to the view.
             [self.imageView setImage: image];
             self.scrollView.contentSize = self.imageView.image.size;
-            self.imageView.frame        = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+            
+            // Append image dimensions to the title bar            
+            NSString *imageWidthAsString  = [NSString stringWithFormat: @"%g", self.imageView.image.size.width];
+            NSString *imageHeightAsString = [NSString stringWithFormat: @"%g", self.imageView.image.size.height];
+            NSString *imageSizeAsString   = [NSString stringWithFormat: @" (%@w x %@h)", imageWidthAsString, imageHeightAsString];
+            self.navigationItem.title     = [self.navigationItem.title stringByAppendingString:imageSizeAsString];
             
             // Color of navigation bar indicates cache state
-            if (self.parentViewController) { // if iPhone
-                if (photoInCache) {
-                    self.navigationController.navigationBar.tintColor = CACHE_COLOR;
-                    self.scrollView.backgroundColor = CACHE_COLOR;
-                } else {
-                    self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
-                    self.scrollView.backgroundColor = DEFAULT_COLOR;
-                }
-            } else {  // if iPad
-                if (photoInCache) {
-                    self.scrollView.backgroundColor = CACHE_COLOR;
-                } else {
-                    self.scrollView.backgroundColor = DEFAULT_COLOR;
-                }
+            if (photoInCache) {
+                self.navigationController.navigationBar.tintColor = CACHE_COLOR;
+                self.scrollView.backgroundColor = CACHE_COLOR;
+            } else {
+                self.navigationController.navigationBar.tintColor = DEFAULT_COLOR;
+                self.scrollView.backgroundColor = DEFAULT_COLOR;
             }
-                        
+            
             // zoom to fit the image by whichever dimension is closest to the screen size
             CGFloat w1 = self.scrollView.bounds.size.width;
             CGFloat h1 = self.scrollView.bounds.size.height;
             CGFloat w2 = self.imageView.image.size.width;
             CGFloat h2 = self.imageView.image.size.height;
             
-            CGFloat width  = w2;
-            CGFloat height = h2;
+            CGFloat width  = w1;
+            CGFloat height = h1;
             
-            if (w1 - w2 > h1 - h2) {
-                width = w2;
-                height = h2 - h1;
-            } else {
-                width = w2 - w1;
-                height = h2;
+            // Swap width and height when landscape
+            BOOL isPortrait = UIDeviceOrientationIsPortrait(self.interfaceOrientation);
+            
+            if (!isPortrait) {
+                CGFloat temp = w1;
+                w1 = h1;
+                h1 = temp;
             }
-
+            
+            if (abs(w1 - w2) > abs(h1 - h2)) {
+                NSLog(@"One");
+                if (w1 > w2) {
+                    width = w2;
+                    NSLog(@"Three");
+                }
+            } else {
+                NSLog(@"Four");
+                if (h1 < h2) {
+                    height = h2;
+                    width  = w2;
+                    NSLog(@"Two");
+                }
+            }
+            
+            NSLog(@"w1:%g",w1);
+            NSLog(@"h1:%g",h1);
+            NSLog(@"w2:%g",w2);
+            NSLog(@"h2:%g",h2);
+            NSLog(@"width:%g",width);
+            NSLog(@"height:%g",height);
+            NSLog(@"-----");
+            
             [self.scrollView zoomToRect:CGRectMake(0, 0, width, height) animated:YES];
             [self.spinner stopAnimating];
         });
@@ -248,14 +270,14 @@
 
 // Centers image after zooming instead of hugging upper-left corner
 // From Erdemus at http://stackoverflow.com/questions/1316451/center-content-of-uiscrollview-when-smaller
-- (void)scrollViewDidZoom:(UIScrollView *)aScrollView {
-    CGFloat offsetX = (self.scrollView.bounds.size.width > self.scrollView.contentSize.width)? 
-	(self.scrollView.bounds.size.width - self.scrollView.contentSize.width) * 0.5 : 0.0;
-    CGFloat offsetY = (self.scrollView.bounds.size.height > self.scrollView.contentSize.height)? 
-	(self.scrollView.bounds.size.height - self.scrollView.contentSize.height) * 0.5 : 0.0;
-    self.imageView.center = CGPointMake(self.scrollView.contentSize.width  * 0.5 + offsetX, 
-                                        self.scrollView.contentSize.height * 0.5 + offsetY);
-}
+//- (void)scrollViewDidZoom:(UIScrollView *)aScrollView {
+//    CGFloat offsetX = (self.scrollView.bounds.size.width > self.scrollView.contentSize.width)? 
+//    (self.scrollView.bounds.size.width - self.scrollView.contentSize.width) * 0.5 : 0.0;
+//    CGFloat offsetY = (self.scrollView.bounds.size.height > self.scrollView.contentSize.height)? 
+//    (self.scrollView.bounds.size.height - self.scrollView.contentSize.height) * 0.5 : 0.0;
+//    self.imageView.center = CGPointMake(self.scrollView.contentSize.width  * 0.5 + offsetX, 
+//                                        self.scrollView.contentSize.height * 0.5 + offsetY);
+//}
 
 #pragma mark - Map View Controller Delegate
 
@@ -272,13 +294,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight); // rotate subviews
-	self.scrollView.delegate = self;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+//    self.scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight); // rotate subviews
+    self.scrollView.delegate = self;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // If iPhone
         // reference the calling view controller and set its delegate to self
         NSUInteger viewControllerCount = [self.navigationController.viewControllers count];
@@ -289,8 +306,13 @@
         self.scrollView.frame = callingViewController.view.frame;
         self.spinner.center = self.view.center;
     } else {
-        self.scrollView.frame = self.view.frame;
+        self.scrollView.frame = self.navigationController.view.frame;
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidUnload
@@ -298,6 +320,7 @@
     [self setImageView:nil];
     [self setScrollView:nil];
     [self setSpinner:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
