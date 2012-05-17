@@ -336,7 +336,7 @@
         <scene sceneID="OJT-HB-fJf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcU-x6-B65" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController autoresizesArchivedViewToFullSize="NO" wantsFullScreenLayout="YES" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="x8P-VR-umA" customClass="NavigationControllerWithOrientation" sceneMemberID="viewController">
+                <navigationController autoresizesArchivedViewToFullSize="NO" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="x8P-VR-umA" customClass="NavigationControllerWithOrientation" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OVt-PT-Hk8">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>

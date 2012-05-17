@@ -250,15 +250,13 @@
 
 - (void)viewWillLayoutSubviews
 {
-    CGFloat width  = self.imageView.image.size.width;
-    CGFloat height = self.imageView.image.size.height;
-    CGPoint origin = self.view.frame.origin;
+    if (!self.imageView.image) return; // Sometimes execution will arrive here before the image was retrieved from Flickr
     
-    NSLog(@"width:%g, height:%g, x:%g, y:%g",width,height,origin.x,origin.y);
+    self.imageView.frame        = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.imageView.image.size.width, self.imageView.image.size.height); // Set the scrollable area
+//    self.scrollView.frame       = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
     
-    self.scrollView.contentSize = CGSizeMake(width, height); // Set the scrollable area
-    self.scrollView.frame       = CGRectMake(origin.x, origin.y, width, height);
-    self.imageView.frame        = CGRectMake(origin.x, origin.y, width, height);
+    [self.scrollView zoomToRect:CGRectMake(0, 0, 500, 100) animated:YES];
 }
 
 - (void)viewDidUnload
