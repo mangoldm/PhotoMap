@@ -11,34 +11,35 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKa-Vf-Zoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="8OC-qW-Jjz" customClass="ScrollingPhotoViewController" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="YIA-5H-gHM">
+                    <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="TopLeft" id="YIA-5H-gHM">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="TopLeft" minimumZoomScale="0.20000000000000001" maximumZoomScale="5" id="Pvt-mc-nX0">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="QEI-DH-zQk">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="TopLeft" id="QEI-DH-zQk">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="QeJ-OP-Ylb" appends="YES" id="S21-Xb-Uvh"/>
                                         </connections>
                                     </imageView>
                                     <activityIndicatorView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="TopLeft" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="Fwi-kr-39d">
-                                        <rect key="frame" x="366" y="461" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="365" y="494" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.3549904337" green="0.12840884920000001" blue="0.01032684335" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="8OC-qW-Jjz" id="1JC-mR-4by"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.3549904337" green="0.12840884920000001" blue="0.01032684335" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Title" id="eR4-pr-TIx"/>
                     <connections>
@@ -53,18 +54,18 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1969" y="284"/>
+            <point key="canvasLocation" x="2081" y="284"/>
         </scene>
         <!--Map View Controller - Map-->
         <scene sceneID="Guw-u6-0rb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwG-x6-UPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="No5-Nf-mar" customClass="MapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Ps-Jg-v8f">
+                <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="No5-Nf-mar" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="TopLeft" id="0Ps-Jg-v8f">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="EGE-dL-6Dh">
+                            <mapView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="TopLeft" mapType="standard" id="EGE-dL-6Dh">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
@@ -92,7 +93,7 @@
         <scene sceneID="SdJ-Et-0By">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CmE-4B-v9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="cg2-h9-B77" customClass="PlacesTableViewController" sceneMemberID="viewController">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" clearsSelectionOnViewWillAppear="NO" id="cg2-h9-B77" customClass="PlacesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iR9-Lc-uk6">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,8 +157,8 @@
         <scene sceneID="v1e-po-W1Z">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBH-5K-vvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="CIg-Xz-tSS" customClass="PhotosTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z2N-E6-9cb">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" clearsSelectionOnViewWillAppear="NO" id="CIg-Xz-tSS" customClass="PhotosTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="TopLeft" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z2N-E6-9cb">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.95436228140000001" blue="0.68379633399999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -211,14 +212,14 @@
         <scene sceneID="rSg-Fk-9tL">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pob-cW-qVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Cog-EU-u3l" customClass="PhotosTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="c8K-aF-YDj">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" clearsSelectionOnViewWillAppear="NO" id="Cog-EU-u3l" customClass="PhotosTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="c8K-aF-YDj">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.95436228140000001" blue="0.68379633399999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo Row" textLabel="TZV-iG-kbw" detailTextLabel="oYt-8f-fO9" style="IBUITableViewCellStyleSubtitle" id="m5h-QV-Zdp">
+                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo Row" textLabel="TZV-iG-kbw" detailTextLabel="oYt-8f-fO9" style="IBUITableViewCellStyleSubtitle" id="m5h-QV-Zdp">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -267,7 +268,7 @@
         <scene sceneID="Zjd-v5-0YD">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcw-98-rvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="FwG-gT-vjN" sceneMemberID="viewController">
+                <navigationController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="FwG-gT-vjN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Top Places" image="world.png" id="7fN-ai-GYh"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="we6-OD-oFT">
                         <autoresizingMask key="autoresizingMask"/>
@@ -283,7 +284,7 @@
         <scene sceneID="dgb-58-qTB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="106-JV-Dbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <splitViewController id="9iF-Ag-f0q" sceneMemberID="viewController">
+                <splitViewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="9iF-Ag-f0q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Uza-f6-khz"/>
                     <connections>
@@ -298,7 +299,7 @@
         <scene sceneID="W7B-IS-Ihm">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXZ-Dl-Jyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController title="Browse" id="INy-Ub-eTq" customClass="PhotosTabBar" sceneMemberID="viewController">
+                <tabBarController autoresizesArchivedViewToFullSize="NO" title="Browse" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="INy-Ub-eTq" customClass="PhotosTabBar" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="0ca-eM-OZ1">
@@ -316,7 +317,7 @@
         <scene sceneID="0iv-Yd-wwQ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndu-rG-NjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="7Ea-oi-Aac" sceneMemberID="viewController">
+                <navigationController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" modalPresentationStyle="currentContext" id="7Ea-oi-Aac" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Recents" image="clock.png" id="sHA-gv-Lqg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="cBU-GJ-L96">
@@ -331,17 +332,21 @@
             </objects>
             <point key="canvasLocation" x="-509" y="-257"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller With Orientation-->
         <scene sceneID="OJT-HB-fJf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcU-x6-B65" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="x8P-VR-umA" sceneMemberID="viewController">
+                <navigationController autoresizesArchivedViewToFullSize="NO" wantsFullScreenLayout="YES" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="flipHorizontal" id="x8P-VR-umA" customClass="NavigationControllerWithOrientation" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OVt-PT-Hk8">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RTZ-bq-web">
+                        <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="8OC-qW-Jjz" kind="relationship" relationship="rootViewController" id="M9g-Vs-00U"/>
                     </connections>
@@ -361,6 +366,9 @@
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
+        </class>
+        <class className="NavigationControllerWithOrientation" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NavigationControllerWithOrientation.h"/>
         </class>
         <class className="PhotosTabBar" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosTabBar.h"/>

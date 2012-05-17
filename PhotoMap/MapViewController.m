@@ -42,17 +42,6 @@
     [self updateMapView];
 }
 
-- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)newSplitViewBarButtonItem
-{
-    if (_splitViewBarButtonItem != newSplitViewBarButtonItem) {
-        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
-        if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
-        if (newSplitViewBarButtonItem) [toolbarItems insertObject:newSplitViewBarButtonItem atIndex:0];
-        self.toolbar.items = toolbarItems;
-        _splitViewBarButtonItem = newSplitViewBarButtonItem;
-    }
-}
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Show the image
@@ -211,6 +200,19 @@
     MKCoordinateSpan        span = {.latitudeDelta = latitudeDelta + 0.012, .longitudeDelta = longitudeDelta + 0.012};
     MKCoordinateRegion    region = {coord, span};
     [self.mapView setRegion:region];
+}
+
+#pragma  mark - SplitViewBarButtonItemPresenter
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)newSplitViewBarButtonItem
+{
+    if (_splitViewBarButtonItem != newSplitViewBarButtonItem) {
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        if (_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
+        if (newSplitViewBarButtonItem) [toolbarItems insertObject:newSplitViewBarButtonItem atIndex:0];
+        self.toolbar.items = toolbarItems;
+        _splitViewBarButtonItem = newSplitViewBarButtonItem;
+    }
 }
 
 #pragma mark - View Life Cycle

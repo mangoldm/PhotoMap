@@ -231,12 +231,6 @@
 
 #pragma mark - View lifecycle
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     BOOL updateRecentPlaces;
@@ -270,7 +264,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:NO];
+    [super viewDidAppear:animated];
     
     // Check if segued from place annotation callout accessory
     id detail = [self.splitViewController.viewControllers lastObject];
@@ -280,6 +274,12 @@
             [self performSegueWithIdentifier:@"Show Photos from Table on iPad" sender:self];
         }
     }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return YES;
 }
 
 @end

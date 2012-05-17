@@ -30,6 +30,7 @@
 		6D99E37314F9EE4D00108D40 /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D99E37214F9EE4D00108D40 /* world.png */; };
 		6DCE2FB514F83F7B00132C8A /* PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE2FB414F83F7B00132C8A /* PhotosTableViewController.m */; };
 		6DE5FC941556CF870046122F /* PhotosTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5FC931556CF870046122F /* PhotosTabBar.m */; };
+		6DFFC92115645A290058DA69 /* NavigationControllerWithOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFFC92015645A280058DA69 /* NavigationControllerWithOrientation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		6DE5FC901556CD0D0046122F /* SplitViewBarButtonItemPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenter.h; sourceTree = "<group>"; };
 		6DE5FC921556CF870046122F /* PhotosTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosTabBar.h; sourceTree = "<group>"; };
 		6DE5FC931556CF870046122F /* PhotosTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosTabBar.m; sourceTree = "<group>"; };
+		6DFFC91F15645A280058DA69 /* NavigationControllerWithOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationControllerWithOrientation.h; sourceTree = "<group>"; };
+		6DFFC92015645A280058DA69 /* NavigationControllerWithOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControllerWithOrientation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 				6D7F983E14F8053200E0A682 /* MainStoryboard_iPad.storyboard */,
 				6D836916153CE182009F56AA /* MapViewController.h */,
 				6D836917153CE182009F56AA /* MapViewController.m */,
+				6DFFC91F15645A280058DA69 /* NavigationControllerWithOrientation.h */,
+				6DFFC92015645A280058DA69 /* NavigationControllerWithOrientation.m */,
 				6DE5FC921556CF870046122F /* PhotosTabBar.h */,
 				6DE5FC931556CF870046122F /* PhotosTabBar.m */,
 				6DCE2FB314F83F7B00132C8A /* PhotosTableViewController.h */,
@@ -248,6 +253,7 @@
 				6D836918153CE182009F56AA /* MapViewController.m in Sources */,
 				6D8FD9691543152F003020F3 /* FlickrPhotoAnnotation.m in Sources */,
 				6DE5FC941556CF870046122F /* PhotosTabBar.m in Sources */,
+				6DFFC92115645A290058DA69 /* NavigationControllerWithOrientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
