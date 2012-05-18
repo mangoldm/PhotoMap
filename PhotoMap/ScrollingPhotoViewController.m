@@ -196,12 +196,14 @@
         }
         
         // Add photo to recents list and save in cache.
+        [self addToRecentPhotos];
+        [self cachePhoto:dataForPhoto withID:photoID];
+        
         dispatch_async(dispatch_get_main_queue(),^{
-            [self addToRecentPhotos];
-            [self cachePhoto:dataForPhoto withID:photoID];
-            
             // Push image to the view.
             [self.imageView setImage: image];
+            self.scrollView.contentSize = image.size;
+            [self.view setNeedsLayout];
             
             // Append image dimensions to the title bar            
             NSString *imageWidthAsString  = [NSString stringWithFormat: @"%g", self.imageView.image.size.width];
@@ -240,6 +242,10 @@
 {
     [super viewDidLoad];
     self.scrollView.delegate = self;
+    
+    self.scrollView.frame = self.view.frame;
+    self.imageView.frame  = self.view.frame;
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // If iPhone
         // reference the calling view controller and set its delegate to self
         NSUInteger viewControllerCount = [self.navigationController.viewControllers count];
@@ -250,13 +256,30 @@
 
 - (void)viewWillLayoutSubviews
 {
+    [super viewWillLayoutSubviews];
+    NSLog(@"viewWillLayoutSubviews");
     if (!self.imageView.image) return; // Sometimes execution will arrive here before the image was retrieved from Flickr
     
-    self.imageView.frame        = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-    self.scrollView.contentSize = CGSizeMake(self.imageView.image.size.width, self.imageView.image.size.height); // Set the scrollable area
-//    self.scrollView.frame       = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    // center the image as it becomes smaller than the size of the screen
     
-    [self.scrollView zoomToRect:CGRectMake(0, 0, 500, 100) animated:YES];
+    CGSize boundsSize    = self.imageView.bounds.size;
+    CGRect frameToCenter = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    NSLog(@"boundsSize:%@ frameToCenter:%@",NSStringFromCGSize(boundsSize), NSStringFromCGRect(frameToCenter));
+    
+    // center horizontally
+    if (frameToCenter.size.width < boundsSize.width)
+        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
+    else
+        frameToCenter.origin.x = 0;
+    
+    // center vertically
+    if (frameToCenter.size.height < boundsSize.height)
+        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
+    else
+        frameToCenter.origin.y = 0;
+    
+    self.imageView.frame = frameToCenter;
+    self.scrollView.frame = self.view.frame;
 }
 
 - (void)viewDidUnload
