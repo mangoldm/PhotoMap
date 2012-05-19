@@ -267,17 +267,18 @@
     CGRect imageFrame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
     CGSize zoomSize   = scrollViewSize;
     
-    
-    // fill horizontally
-    if (imageFrame.size.width > scrollViewSize.width)
-        zoomSize.width = imageFrame.size.width;
-    
-    // fill vertically
+    // Calculate zoom size
     if (imageFrame.size.height < scrollViewSize.height) {
-        zoomSize.height = imageFrame.size.height;
         if (imageFrame.size.width > scrollViewSize.width) {
-            zoomSize.width = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
+            zoomSize.width  = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
+            zoomSize.height = imageFrame.size.height;
+        } else {
+            zoomSize.width  = imageFrame.size.width;
+            zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
         }
+    } else { // image is taller than scrollView
+        zoomSize.width  = imageFrame.size.width;
+        zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
     }
     
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
