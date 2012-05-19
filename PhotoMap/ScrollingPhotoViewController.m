@@ -202,6 +202,7 @@
         dispatch_async(dispatch_get_main_queue(),^{
             // Push image to the view.
             [self.imageView setImage: image];
+            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
             self.scrollView.contentSize = image.size;
             [self.view setNeedsLayout];
             
@@ -286,11 +287,14 @@
             }
         }
     } else { // image is taller than scrollView
-        zoomSize.width  = imageFrame.size.width;
-        zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
+        if (imageFrame.size.width == imageFrame.size.height) { // image is square
+            zoomSize.width = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
+//            zoomSize.height = scrollViewSize.height;
+        } else {
+            zoomSize.width  = scrollViewSize.width;
+            zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
+        }
     }
-    
-    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
     [self.scrollView zoomToRect:CGRectMake(0, 0, zoomSize.width, zoomSize.height) animated:YES];
     NSLog(@"scrollViewSize:%@ imageFrame:%@ zoomWidth:%g zoomHeight%g",NSStringFromCGSize(scrollViewSize), NSStringFromCGRect(imageFrame), zoomSize.width, zoomSize.height);
 }
