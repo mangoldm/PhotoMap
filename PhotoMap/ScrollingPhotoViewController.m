@@ -272,9 +272,18 @@
         if (imageFrame.size.width > scrollViewSize.width) {
             zoomSize.width  = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
             zoomSize.height = imageFrame.size.height;
-        } else {
-            zoomSize.width  = imageFrame.size.width;
-            zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
+        } else { // image is narrower than scrollView
+            if (scrollViewSize.width - imageFrame.size.width < scrollViewSize.height - imageFrame.size.height) {
+                zoomSize.width = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
+                zoomSize.height = imageFrame.size.height;
+            } else {
+                zoomSize.width  = imageFrame.size.width;
+                if (imageFrame.size.width == imageFrame.size.height) { // image is square
+                    zoomSize.height = imageFrame.size.height;
+                } else {
+                    zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
+                }
+            }
         }
     } else { // image is taller than scrollView
         zoomSize.width  = imageFrame.size.width;
@@ -282,7 +291,6 @@
     }
     
     self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-//    [self.scrollView zoomToRect:CGRectMake(0, 0, 272, self.imageView.image.size.height) animated:YES]; this works
     [self.scrollView zoomToRect:CGRectMake(0, 0, zoomSize.width, zoomSize.height) animated:YES];
     NSLog(@"scrollViewSize:%@ imageFrame:%@ zoomWidth:%g zoomHeight%g",NSStringFromCGSize(scrollViewSize), NSStringFromCGRect(imageFrame), zoomSize.width, zoomSize.height);
 }
