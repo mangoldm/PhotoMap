@@ -22,7 +22,7 @@
                                     <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="TopLeft" id="QEI-DH-zQk">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="QeJ-OP-Ylb" appends="YES" id="S21-Xb-Uvh"/>

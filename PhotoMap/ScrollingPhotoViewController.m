@@ -244,59 +244,51 @@
     [super viewDidLoad];
     self.scrollView.delegate = self;
     
-    self.scrollView.frame = self.view.frame;
-    self.imageView.frame  = self.view.frame;
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) { // If iPhone
-        // reference the calling view controller and set its delegate to self
         NSUInteger viewControllerCount = [self.navigationController.viewControllers count];
         PhotosTableViewController *callingViewController = [self.navigationController.viewControllers objectAtIndex:viewControllerCount - 2];
         [callingViewController setDelegate:self];
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+        
+    self.scrollView.frame = self.view.frame;
+    self.imageView.frame  = self.view.frame;
+}
+
 - (void)viewWillLayoutSubviews
 {
     if (!self.imageView.image) return; // Sometimes, execution arrives here before the image has been retrieved
     [super viewWillLayoutSubviews];
-    NSLog(@"viewWillLayoutSubviews");
-    
-    // UIViewContentModeScaleAspectFill would clip the image and prevent zooming
-    // This code performs the aspect fill manually while preserving the entire image
     
     CGSize scrollViewSize = self.scrollView.bounds.size;
-    CGRect imageFrame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-    CGSize zoomSize   = scrollViewSize;
+    CGRect imageRect = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    CGSize zoomSize  = scrollViewSize;
+    int scaleType;
     
-    // Calculate zoom size
-    if (imageFrame.size.height < scrollViewSize.height) {
-        if (imageFrame.size.width > scrollViewSize.width) {
-            zoomSize.width  = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
-            zoomSize.height = imageFrame.size.height;
-        } else { // image is narrower than scrollView
-            if (scrollViewSize.width - imageFrame.size.width < scrollViewSize.height - imageFrame.size.height) {
-                zoomSize.width = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
-                zoomSize.height = imageFrame.size.height;
-            } else {
-                zoomSize.width  = imageFrame.size.width;
-                if (imageFrame.size.width == imageFrame.size.height) { // image is square
-                    zoomSize.height = imageFrame.size.height;
-                } else {
-                    zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
-                }
-            }
-        }
-    } else { // image is taller than scrollView
-        if (imageFrame.size.width == imageFrame.size.height) { // image is square
-            zoomSize.width = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
-//            zoomSize.height = scrollViewSize.height;
-        } else {
-            zoomSize.width  = scrollViewSize.width;
-            zoomSize.height = imageFrame.size.width * scrollViewSize.height / scrollViewSize.width;
-        }
+    CGFloat aspectRatio = imageRect.size.width / imageRect.size.height;
+    if (aspectRatio < 1) { // Image is portrait
+        scaleType = 1;
+    } else {
+        scaleType = 2;
     }
+    
+    switch (scaleType) {
+        case 1:
+            zoomSize.width  = imageRect.size.width;
+            zoomSize.height = imageRect.size.width * scrollViewSize.height / scrollViewSize.width;
+            break;
+            
+        case 2:
+            zoomSize.height = imageRect.size.height;
+            zoomSize.width  = imageRect.size.height * scrollViewSize.width / scrollViewSize.height;
+            break;
+    }
+    
     [self.scrollView zoomToRect:CGRectMake(0, 0, zoomSize.width, zoomSize.height) animated:YES];
-    NSLog(@"scrollViewSize:%@ imageFrame:%@ zoomWidth:%g zoomHeight%g",NSStringFromCGSize(scrollViewSize), NSStringFromCGRect(imageFrame), zoomSize.width, zoomSize.height);
 }
 
 - (void)viewDidUnload
