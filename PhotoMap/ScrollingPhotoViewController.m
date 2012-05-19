@@ -256,30 +256,34 @@
 
 - (void)viewWillLayoutSubviews
 {
+    if (!self.imageView.image) return; // Sometimes, execution arrives here before the image has been retrieved
     [super viewWillLayoutSubviews];
     NSLog(@"viewWillLayoutSubviews");
-    if (!self.imageView.image) return; // Sometimes execution will arrive here before the image was retrieved from Flickr
     
-    // center the image as it becomes smaller than the size of the screen
+    // UIViewContentModeScaleAspectFill would clip the image and prevent zooming
+    // This code performs the aspect fill manually while preserving the entire image
     
-    CGSize boundsSize    = self.imageView.bounds.size;
-    CGRect frameToCenter = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-    NSLog(@"boundsSize:%@ frameToCenter:%@",NSStringFromCGSize(boundsSize), NSStringFromCGRect(frameToCenter));
+    CGSize scrollViewSize = self.scrollView.bounds.size;
+    CGRect imageFrame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+    CGSize zoomSize   = scrollViewSize;
     
-    // center horizontally
-    if (frameToCenter.size.width < boundsSize.width)
-        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    else
-        frameToCenter.origin.x = 0;
     
-    // center vertically
-    if (frameToCenter.size.height < boundsSize.height)
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    else
-        frameToCenter.origin.y = 0;
+    // fill horizontally
+    if (imageFrame.size.width > scrollViewSize.width)
+        zoomSize.width = imageFrame.size.width;
     
-    self.imageView.frame = frameToCenter;
-    self.scrollView.frame = self.view.frame;
+    // fill vertically
+    if (imageFrame.size.height < scrollViewSize.height) {
+        zoomSize.height = imageFrame.size.height;
+        if (imageFrame.size.width > scrollViewSize.width) {
+            zoomSize.width = imageFrame.size.height * scrollViewSize.width / scrollViewSize.height;
+        }
+    }
+    
+    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+//    [self.scrollView zoomToRect:CGRectMake(0, 0, 272, self.imageView.image.size.height) animated:YES]; this works
+    [self.scrollView zoomToRect:CGRectMake(0, 0, zoomSize.width, zoomSize.height) animated:YES];
+    NSLog(@"scrollViewSize:%@ imageFrame:%@ zoomWidth:%g zoomHeight%g",NSStringFromCGSize(scrollViewSize), NSStringFromCGRect(imageFrame), zoomSize.width, zoomSize.height);
 }
 
 - (void)viewDidUnload
