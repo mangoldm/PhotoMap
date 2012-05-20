@@ -267,15 +267,14 @@
     CGSize scrollViewSize = self.scrollView.bounds.size;
     CGRect imageRect = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
     CGSize zoomSize  = scrollViewSize;
+    CGFloat imageAspectRatio      = imageRect.size.width / imageRect.size.height;
+    CGFloat scrollViewAspectRatio = scrollViewSize.width / scrollViewSize.height;
     int scaleType;
-    
-    CGFloat aspectRatio = imageRect.size.width / imageRect.size.height;
-    if (aspectRatio < 1) { // Image is portrait
+    if (imageAspectRatio < scrollViewAspectRatio) {
         scaleType = 1;
     } else {
         scaleType = 2;
     }
-    
     switch (scaleType) {
         case 1:
             zoomSize.width  = imageRect.size.width;
