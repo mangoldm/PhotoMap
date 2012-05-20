@@ -30,7 +30,7 @@
                                     </imageView>
                                     <activityIndicatorView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="TopLeft" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="Fwi-kr-39d">
                                         <rect key="frame" x="365" y="494" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.59607845540000004" green="0.2470588386" blue="0.082352943720000002" alpha="1" colorSpace="deviceRGB"/>
@@ -401,7 +401,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7iC-Ev-zDb"/>
+        <segue reference="xaQ-6t-0TW"/>
         <segue reference="u5J-eu-vGx"/>
     </inferredMetricsTieBreakers>
 </document>

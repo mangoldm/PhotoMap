@@ -257,6 +257,7 @@
         
     self.scrollView.frame = self.view.frame;
     self.imageView.frame  = self.view.frame;
+    self.spinner.center = self.view.center;
 }
 
 - (void)viewWillLayoutSubviews
