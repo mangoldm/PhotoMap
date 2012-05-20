@@ -45,7 +45,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Show the image
-    if ([segue.identifier isEqualToString: @"Show Image For Photo Annotation on iPhone"]) {
+    if ([segue.identifier isEqualToString: @"Show Image for Photo Annotation on iPhone"]) {
         [segue.destinationViewController viewController:self chosePhoto:self.chosenAnnotation.photo];
     } else if ([segue.identifier isEqualToString: @"Show Image for Photo Annotation on iPad"]) {
         UINavigationController *nav = segue.destinationViewController;
@@ -103,7 +103,7 @@
         if (self.splitViewController) {
             [self performSegueWithIdentifier:@"Show Image for Photo Annotation on iPad" sender:view.annotation];
         } else {
-            [self performSegueWithIdentifier:@"Show Image For Photo Annotation on iPhone" sender:view.annotation];
+            [self performSegueWithIdentifier:@"Show Image for Photo Annotation on iPhone" sender:view.annotation];
         }
     } else {  // Annotation is for a place
         if (!self.splitViewController) { // not iPad
